@@ -1,0 +1,88 @@
+<!-- Start Sidemenu Area -->
+<div class="sidemenu-area" [ngClass]="sidebarClass">
+    <div class="sidemenu-header">
+        <a routerLink="dashboard" class="navbar-brand d-flex align-items-center">
+            <img src="assets\img\small-logo.png" alt="image">
+            <span>Seg</span>
+        </a>
+
+        <div class="burger-menu d-none d-lg-block "  >
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar" ></span>
+        </div>
+
+        <div class="responsive-burger-menu d-block d-lg-none " [ngClass]="movileClass"  (click)=" movilDesactivar()">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar" ></span>
+        </div>
+    </div>
+
+    <div class="sidemenu-body">
+        <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar="">
+            <li class="nav-item-title">
+                Main
+            </li>
+            <li class="nav-item">
+                <a routerLink="dashboard" class="nav-link" aria-expanded="false">
+                    <span class="icon"><i class='bx bx-analyse'></i></span>
+                    <span class="menu-title">Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item-title">
+                Gestiones
+            </li>
+            <li class="nav-item">
+                <a routerLink="usuario" class="nav-link" aria-expanded="false">
+                    <span class="icon"><i class=' bx bxs-user-circle'></i></span>
+                    <span class="menu-title">Usuarios</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a routerLink="novedades" class="nav-link" aria-expanded="false">
+                    <span class="icon"><i class=' bx bx-notepad'></i></span>
+                    <span class="menu-title">Novedades</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="visitas" class="nav-link" aria-expanded="false">
+                    <span class="icon"><i class='bx bx-user-pin'></i></span>
+                    <span class="menu-title">Visitas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="archivo" class="nav-link" aria-expanded="false">
+                    <span class="icon"><i class=' bx bxs-folder-minus'></i></span>
+                    <span class="menu-title">Archivo</span>
+                </a>
+            </li>
+
+            <!-- <li class="nav-item">
+                <a  class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class='bx bx-home-circle'></i></span>
+                    <span class="menu-title">Dashboard</span>
+                    <span class="badge">2</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item">
+                        <a routerLink="dashboard" class="nav-link">
+                            <span class="icon"><i class='bx bx-analyse'></i></span>
+                            <span class="menu-title">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a routerLink="home" class="nav-link">
+                            <span class="icon"><i class='bx bxs-shopping-bag'></i></span>
+                            <span class="menu-title">eCommerce</span>
+                        </a>
+                    </li>
+                </ul>
+            </li> -->
+        </ul>
+    </div>
+</div>
+<!-- End Sidemenu Area -->

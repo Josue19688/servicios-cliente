@@ -1,0 +1,100 @@
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Gestion de Archivo</h3>
+
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="bx bx-dots-horizontal-rounded"></i>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-show"></i> View
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-edit-alt"></i> Edit
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-trash"></i> Delete
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-printer"></i> Print
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        
+
+        <button type="button" class="btn btn-primary rounded-pill mt-5" data-toggle="modal" data-target=".basicModalLG">
+            Crear Archivo
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade basicModalLG" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Crear Archivo</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" placeholder="Ingrese el nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>Correo</label>
+                                <input type="email" class="form-control" placeholder="Ingrese el nombre">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary rounded-pill">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-code-preview" data-label="Listado de Archivos">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

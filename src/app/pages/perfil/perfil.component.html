@@ -1,0 +1,95 @@
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Perfil</h3>
+
+    </div>
+
+    <div class="card-body">
+       
+        <div class="demo-code-preview" data-label="Actualizar Perfil">
+            <div class="highlight" id="formsGrid1">
+                <form  [formGroup]="miFormulario"
+                (ngSubmit)="actualizar()">
+                    <div class="row">
+                        <div class="col">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                formControlName="nombre"
+                                readonly
+                            >
+                        </div>
+                        <div class="col">
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                placeholder="Last name"
+                                readonly
+                                formControlName="correo"
+                             >
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                readonly
+                                formControlName="unidad"
+                            >
+                        </div>
+                        <div class="col">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                readonly
+                                formControlName="rol"
+                            >
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary rounded-pill mt-3" >
+                        Guardar
+                    </button> -->
+                </form>
+        
+            </div>
+        </div>
+
+        <div class="demo-code-preview mt-5" data-label="Actualizar Fotografia">
+            <div class="highlight" id="formsGrid1">
+               
+                    <div class="row">
+                        <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label for="images" class="drop-container">
+                               
+                                <input 
+                                type="file" 
+                                id="images" 
+                                accept="image/*" 
+                                required
+                                (change)="cambiarImagen($event)"
+                                >
+                              </label>
+                           
+                        </div>
+                        <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <label for="images" class="drop-container">
+                                <img *ngIf="!imgTemporal" [src]="this.user.imagenUrl" width="100" height="100">
+                                <img *ngIf="imgTemporal"  [src]="imgTemporal" width="100" height="100">
+                            </label>
+                        </div>
+                    </div>
+                   
+                    <button type="submit" 
+                    [disabled]="!subirImagen"
+                     class="btn btn-primary rounded-pill mt-3"
+                     (click)="actualizarImagen()"
+                      >
+                        Actualizar Imagen
+                    </button>
+             
+            </div>
+        </div>
+        <br> <br> <br>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="login-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="login-form">
+                <div class="logo">
+                    <a href="javascript:void(0);"><img src="https://cc.gob.gt/wp-content/uploads/2020/06/Elementos-02.png" height="100" width="100" alt="image"></a>
+                </div>
+
+                <h2>Bienvenido</h2>
+
+                <form
+                [formGroup]="miFormulario"
+                (ngSubmit)="login()"
+                >
+                    <div class="form-group">
+                        <input 
+                        type="email" 
+                        class="form-control" 
+                        name="correo" 
+                        formControlName="correo"
+                        placeholder="Ingrese su correo."
+                        >
+                        <span class="label-title"><i class="bx bx-user"></i></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        name="contrasena" 
+                        formControlName="contrasena"
+                        placeholder="Ingrese su contraseña"
+                        >
+                        <span class="label-title"><i class="bx bx-lock"></i></span>
+                    </div>
+
+                    
+
+                    <button type="submit" class="login-btn">Login</button>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,145 @@
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Gestion de Novedades Total : ({{totalNovedades}})</h3>
+
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="bx bx-dots-horizontal-rounded"></i>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-show"></i> View
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-edit-alt"></i> Edit
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-trash"></i> Delete
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-printer"></i> Print
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        
+
+        <button type="button" (click)="abrirModal()" class="btn btn-primary rounded-pill mt-5" data-toggle="modal" data-target=".basicModalLG">
+            Crear Novedad
+        </button>
+
+        <!-- Modal -->
+        <!-- <div class="modal fade basicModalLG col-sm-12 col-md-12 col-lg-12" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Crear Novedad</h5>
+                        <button type="button" #closebutton class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="miFormulario" (ngSubmit)="agregar()">
+                            <div class="form-group">
+                                <label>Seleccionar Tipo</label>
+                                <select formControlName="tipo" class="form-control" >
+                                    <option>Accidente Transito</option>
+                                    <option>Manifestación</option>
+                                    <option>Robo</option>
+                                    <option>Cambio Turno</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Hora</label>
+                                <input type="time" formControlName="hora" class="form-control" placeholder="Ingrese hora">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha</label>
+                                <input type="date" formControlName="fecha" class="form-control" placeholder="Ingrese fecha">
+                            </div>
+                            <div class="form-group">
+                                <label>Seleccionar Puesto</label>
+                                <select formControlName="puesto" class="form-control">
+                                    <option>Aguila 1</option>
+                                    <option>Aguila 2</option>
+                                    <option>Aguila 3</option>
+                                    <option>Aguila 4</option>
+                                    <option>Aguila 5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Preliminar</label>
+                                <textarea formControlName="preliminar" type="text" class="form-control" rows="3" placeholder="Ingrese la Preliminar"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea type="text" formControlName="descripcion" class="form-control" rows="3" placeholder="Ingrese la Descripción"></textarea>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger rounded-pill" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-info rounded-pill" data-dismiss="modal">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+
+
+        <div class="row animated fadeIn fast"
+            *ngIf="cargando">
+            <div class="col-12">
+                
+                <div class="alert alert-info text-center">
+                <h4 class="alert-heading">Cargando</h4>
+                <i class="fa fa-spin fa-refresh fa-2x"></i>
+                <p class="mb-0">Por favor espere</p>
+                </div>
+
+            </div>
+        </div> 
+        <div class="demo-code-preview col-sm-12 col-md-12 col-lg-12 animated fadeIn fast" *ngIf="!cargando"
+        data-label="Listado de Novedades ">
+            <table class="table col col-sm-12 col-md-12 col-lg-12">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Puesto</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Preliminar</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let item of novedades">
+                        <th scope="row">{{item.uid}}</th>
+                        <td>{{item.puesto}}</td>
+                        <td>{{item.tipo}}</td>
+                        <td>{{item.preliminar}}</td>
+                        <td>
+                            <a href="#" class="btn btn-outline-success" style="margin-right: 5px; "><i  class="bx bxs-show"></i></a>
+                            <a href="#" class="btn btn-outline-info" style="margin-right: 5px; "><i  class="bx bx-edit-alt"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-outline-danger" (click)="eliminarNovedad(item)" >                <i  class="bx bx-trash"></i></a>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div >
+                <button (click)="cambiarPagina(-5)" class="btn btn-outline-primary rounded-pill">Anteriores</button>
+                &nbsp;
+                <button (click)="cambiarPagina(5)" class="btn btn-outline-primary rounded-pill">Siguientes</button>
+            </div>
+        </div>
+    </div>
+</div>

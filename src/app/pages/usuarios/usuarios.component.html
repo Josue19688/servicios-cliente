@@ -1,0 +1,168 @@
+
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Crear Usuario</h3>
+    </div>
+    <form
+        [formGroup]="miFormulario"
+        (ngSubmit)="crearUsuario()"
+    >
+        <div class="row">
+            <div class="form-group  col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <input 
+                type="text" 
+                class="form-control " 
+                placeholder="Ingrese el nombre."
+                formControlName="nombre"
+                >
+            </div>
+            <div class="form-group  col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <input 
+                type="text" 
+                class="form-control " 
+                placeholder="Ingrese el correo."
+                formControlName="correo"
+                >
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="form-group  col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <input 
+                type="text" 
+                class="form-control " 
+                placeholder="Ingrese una contraseña."
+                formControlName="contrasena"
+                >
+            </div>
+            <div class="form-group  col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <input 
+                type="text" 
+                class="form-control " 
+                placeholder="Ingrese la unidad a que pertenece."
+                formControlName="unidad"
+                >
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary rounded-pill " >
+            Guardar
+        </button>
+
+    </form>
+   
+</div>
+
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Listado de Usuarios Total : {{totalUsuarios}}</h3>
+
+       
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="bx bx-dots-horizontal-rounded"></i>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-show"></i> View
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-edit-alt"></i> Edit
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-trash"></i> Delete
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-printer"></i> Print
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bx bx-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+       
+        <div *ngIf="respuesta" class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Buen Trabajo!!!</strong> &nbsp; &nbsp; &nbsp; Registro Actualizado Correctamente!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="spinner-border text-primary animated fadeIn fast" role="status"  *ngIf="cargando">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="demo-code-preview" data-label="Listado de Usuarios" *ngIf="!cargando">
+
+            <div class="nav-search-form d-none ml-auto d-md-block">
+                <label><i class='bx bx-search'></i></label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Buscar usuario"
+                    (keyup)="buscar(txtTermino.value)"
+                    #txtTermino
+                    >
+            </div>
+
+            <table    class="table  table-responsive mt-5" style="max-width: 100%;">
+                <thead class="bg-info">
+                    <tr>
+                        <th class="w100">Avatar</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Unidad</th>
+                        <th>Rol</th>
+                        <th class="w100">Status</th>
+                        <th >Acciones</th>
+                    </tr>
+                </thead>
+                <tbody  >
+                    <tr *ngFor="let item of usuarios">
+                        <td>
+                            <img  [src]="item.imagenUrl" width="50" height="50" class="rounded-circle img-avatar w100" alt="image">
+                        </td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.correo}}</td>
+                        <td>{{item.unidad}}</td>
+                        <td>
+                            <select class="form-control"
+                            [(ngModel)]="item.rol"
+                            (change)="cambiarRol(item)"
+                            >
+                                <option value="ADMIN_ROLE">Admin</option>
+                                <option value="USER_ROLE">Usuario</option>
+                                <option value="AGENTE_ROLE">Agente</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-control"
+                            [(ngModel)]="item.activo"
+                            (change)="cambiarEstado(item)"
+                            >
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                                
+                            </select>
+                            <!-- <div *ngIf="item.activo; then thenBlock else elseBlock"></div>
+                            <ng-template #thenBlock><span class="badge badge-pill badge-primary">Activo</span></ng-template>
+                            <ng-template #elseBlock><span class="badge badge-pill badge-danger">Inactivo</span></ng-template> -->
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-outline-info mr-1" ><i class="bx bx-edit-alt"></i></a>
+                            <a href="javascript:void(0);"  (click)="eliminarUsuario(item)" class="btn btn-outline-danger"><i class="bx bx-trash"></i></a>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="txtTermino.value.length===0" >
+                <button (click)="cambiarPagina(-5)" class="btn btn-outline-primary rounded-pill">Anteriores</button>
+                &nbsp;
+                <button (click)="cambiarPagina(5)" class="btn btn-outline-primary rounded-pill">Siguientes</button>
+            </div>
+        </div>
+    </div>
+</div>
