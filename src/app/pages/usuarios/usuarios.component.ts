@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { BusquedasService } from 'src/app/services/busquedas.service';
 
+
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 
@@ -24,6 +25,7 @@ export class UsuariosComponent implements OnInit{
   desde:any=0;
   cargando:boolean=true;
   respuesta:boolean=false;
+  dtOptions: DataTables.Settings = {};
 
 
 
@@ -42,6 +44,9 @@ export class UsuariosComponent implements OnInit{
   ){}
  
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
     this.getUsuarios();
   }
 
@@ -125,7 +130,7 @@ export class UsuariosComponent implements OnInit{
       return this.usuarios= this.usuariosTemporal;
     }
     this.searchService.buscar('usuario',termino)
-      .subscribe(resp=>{
+      .subscribe((resp:Usuario[] | any[])=>{
         this.usuarios=resp;
     })
    
@@ -150,6 +155,7 @@ export class UsuariosComponent implements OnInit{
     },3000);
     return true;
   }
+
   cambiarEstado(usuario:Usuario){
 
     if(usuario.id===this.authService.usuario?.id){
@@ -168,5 +174,7 @@ export class UsuariosComponent implements OnInit{
     },3000);
     return true;
   }
+
+ 
 
 }

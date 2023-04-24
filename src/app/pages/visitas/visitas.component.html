@@ -1,100 +1,156 @@
+
 <div class="card mb-30">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3>Gestion de Visitas</h3>
-
-        <div class="dropdown">
-            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <i class="bx bx-dots-horizontal-rounded"></i>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bx bx-show"></i> View
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bx bx-edit-alt"></i> Edit
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bx bx-trash"></i> Delete
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bx bx-printer"></i> Print
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bx bx-download"></i> Download
-                </a>
+        <h3>Crear Visita</h3>
+    </div>
+    <form [formGroup]="miFormulario" (ngSubmit)="agregar()">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Seleccionar Tipo</label>
+                    <select formControlName="tipo" class="form-control" >
+                        <option value="Particular">Particular</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Proveedor">Proveedor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Seleccionar Puesto</label>
+                    <select formControlName="puesto" class="form-control">
+                        <option value="Aguila 1">Aguila 1</option>
+                        <option value="Aguila 2">Aguila 2</option>
+                        <option value="Aguila 3">Aguila 3</option>
+                        <option value="Aguila 4">Aguila 4</option>
+                        <option value="Aguila 5">Aguila 5</option>
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="card-body">
-        
-
-        <button type="button" class="btn btn-primary rounded-pill mt-5" data-toggle="modal" data-target=".basicModalLG">
-            Crear Visita
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade basicModalLG" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Crear Visita</h5>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Ingrese el nombre">
-                            </div>
-                            <div class="form-group">
-                                <label>Correo</label>
-                                <input type="email" class="form-control" placeholder="Ingrese el nombre">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary rounded-pill">Guardar</button>
-                    </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Dpi</label>
+                    <input type="text" formControlName="dpi" class="form-control" placeholder="Ingrese el Dpi">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" formControlName="nombre" class="form-control" placeholder="Ingrese el nombre">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Hora Ingreso</label>
+                    <input type="time" formControlName="ingreso" class="form-control" placeholder="Hora ingreso">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Hora Salida</label>
+                    <input type="time" formControlName="salida" class="form-control" placeholder="Hora salida">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Placa</label>
+                    <input type="text" formControlName="placa" class="form-control" placeholder="Ingrese placa">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Vehiculo</label>
+                    <input type="text" formControlName="vehiculo" class="form-control" placeholder="Ingrese vehiculo">
                 </div>
             </div>
         </div>
 
-        <div class="demo-code-preview" data-label="Listado de Visita">
-            <table class="table">
-                <thead class="thead-light">
+        <div class="row">
+           
+            <div class="col">
+                <div class="form-group">
+                    <label>A quien Visista</label>
+                    <input type="text" formControlName="colaborador" class="form-control" placeholder="Ingrese aquien visita">
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Obsevaciones</label>
+                    <input type="text" formControlName="proveniente" class="form-control" placeholder="Ingrese observaciones">
+                </div>
+            </div>
+           
+        </div>
+        
+        <button type="submit" class="btn btn-primary rounded-pill " >
+            Guardar
+        </button>
+    </form>
+   
+</div>
+
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Listado de Visitas Total : {{totalVisitas}}</h3>
+
+       
+       
+    </div>
+
+    <div class="card-body">
+       
+        <div *ngIf="respuesta" class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Buen Trabajo!!!</strong> &nbsp; &nbsp; &nbsp; Registro Actualizado Correctamente!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="spinner-border text-primary animated fadeIn fast" role="status"  *ngIf="cargando">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="demo-code-preview" data-label="Listado de Visitas" *ngIf="!cargando">
+
+            
+            <table  datatable [dtOptions]="dtOptions" class="row-border hover">
+                <thead >
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th>Tipo</th>
+                        <th>Puesto</th>
+                        <th>Nombre</th>
+                        <th>Aquien Visita</th>
+                        <th>Observación</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
+                    <tr *ngFor="let item of visitas">
+                        <td>{{item.tipo}}</td>
+                        <td>{{item.puesto}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.colaborador}}</td>
+                        <td>{{item.proveniente}}</td>
+                        <td>
+                            <a  class="iconos observar mr-2"  (click)="abrirModalArchivo(item)" data-toggle="tooltip" data-placement="top" title="Subir Archivo"><i class="bx bx-cloud-upload"></i></a>
+                            <a  class="iconos observar mr-2" (click)="abrirModal(item)"  data-toggle="tooltip" data-placement="top" title="Ver Visita"><i class=" bx bxs-low-vision"></i></a>
+                            <a  class="iconos editar mr-2" (click)="abrirModalEditar(item)" ><i class="bx bx-edit-alt"  data-toggle="tooltip" data-placement="top" title="Editar Visita"></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Eliminar Visita"  (click)="eliminarVisita(item)" class="iconos eliminar"><i class="bx bx-trash"></i></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<app-editar-visita></app-editar-visita>
+<app-visita-view></app-visita-view>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environments';
 
-const base_url=`http://localhost:5000/uploads`;
+
+const base_url =`${environment.base_url}uploads`;  
 
 @Injectable({
   providedIn: 'root'

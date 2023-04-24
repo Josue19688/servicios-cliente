@@ -14,7 +14,10 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 
 import { PerfilComponent } from './perfil/perfil.component';
-
+import { DataTablesModule } from 'angular-datatables';
+import { AccesosComponent } from './accesos/accesos.component';
+import { ComponentsModule } from '../components/components.module';
+import { AgenteComponent } from './agente/agente.component';
 
 
 @NgModule({
@@ -28,14 +31,18 @@ import { PerfilComponent } from './perfil/perfil.component';
     PerfilComponent,
     SidebarComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AccesosComponent,
+    AgenteComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     PageRoutingModule,
-    FormsModule
+    FormsModule,
+    DataTablesModule,
+    ComponentsModule,
   ],
   exports:[
     HomeComponent,
@@ -44,7 +51,9 @@ import { PerfilComponent } from './perfil/perfil.component';
     ArchivosComponent,
     VisitasComponent,
     NovedadesComponent,
-    PerfilComponent
+    PerfilComponent,
+    AccesosComponent,
+    AgenteComponent
   ]
 })
 export class PageModule { }

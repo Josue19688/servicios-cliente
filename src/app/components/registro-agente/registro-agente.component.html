@@ -1,0 +1,154 @@
+
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Crear Archivo</h3>
+    </div>
+    <form [formGroup]="miFormulario" (ngSubmit)="agregar()">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text"  class="form-control" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Dpi</label>
+                    <input  
+                        type="text" 
+                        class="form-control" 
+                    >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select  class="form-control">
+                        <option value="Activo">Activo</option>
+                        <option value="Baja">Baja</option>
+                        <option value="Suspendido">Suspendido</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Unidad</label>
+                    <select  class="form-control">
+                        <option value="Instalaciones">Seguridad Instalaciones</option>
+                        <option value="Magistratura">Seguridad Magistratura</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Fecha Ingreso</label>
+                    <input  type="date" class="form-control" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Puesto Actual</label>
+                    <select  class="form-control">
+                        <option value="Instalaciones">Seguridad Instalaciones</option>
+                        <option value="Magistratura">Seguridad Magistratura</option>
+                        <option value="Encargado">Encargado Instalaciones</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Grupo</label>
+                    <select  class="form-control">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Nit</label>
+                    <input  type="text" class="form-control" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Igss</label>
+                    <input  type="text" class="form-control" >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Peso</label>
+                    <input  type="text" class="form-control" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Talla</label>
+                    <input  type="text" class="form-control" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Igss</label>
+                    <input  type="text" class="form-control" >
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary rounded-pill " >
+            Guardar
+        </button>
+    </form>
+</div>
+
+<div class="card mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Listado de Archivos Total : </h3>
+
+       
+       
+    </div>
+
+    <div class="card-body">
+       
+        <div class="demo-code-preview" data-label="Listado de Agentes" >
+
+            <table  datatable [dtOptions]="dtOptions" class="row-border hover" >
+                <thead >
+                    <tr>
+                        <th>#</th>
+                        <th>Tipo</th>
+                        <th>Correlativo</th>
+                        <th>Departamento o Unidad</th>
+                        <th>Salida o Ingreso</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody  >
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="#" class="btn btn-outline-info mr-1" ><i class=" bx bxs-low-vision"></i></a>
+                            <a href="#" class="btn btn-outline-info mr-1" ><i class="bx bx-edit-alt"></i></a>
+                            <a href="javascript:void(0);"   class="btn btn-outline-danger"><i class="bx bx-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

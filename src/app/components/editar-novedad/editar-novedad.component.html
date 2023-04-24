@@ -1,0 +1,100 @@
+
+<div class="fondo-modal "
+    [class.oculto]="modalService.ocultarModalEditar"
+>
+    <div class="modal fade basicModalLG show" 
+        id="basicStaticBackdrop" 
+        data-backdrop="static" 
+        role="dialog" 
+        aria-modal="true" 
+        style="display: block; padding-right: 17px;"
+    >
+        <div class="modal-dialog modal-lg" role="document" *ngIf="novedad">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Editar Novedad No. {{novedad.id}}</h3>
+                    <button type="button" (click)="cerrarModal()" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="invoice-area mb-30">
+    
+                        <div class="invoice-middle mb-30">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text">
+                                        <!----iniciio---->
+                                        <form [formGroup]="miFormulario" (ngSubmit)="agregar()">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Seleccionar Tipo</label>
+                                                        <select formControlName="tipo" class="form-control"  [(ngModel)]="novedad.tipo" >
+                                                            <option value="Accidente Transito">Accidente Transito</option>
+                                                            <option value="Manifestación">Manifestación</option>
+                                                            <option value="Robo">Robo</option>
+                                                            <option value="Cambio Turno">Cambio Turno</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Seleccionar Puesto</label>
+                                                        <select formControlName="puesto" class="form-control" [(ngModel)]="novedad.puesto">
+                                                            <option value="Aguila 1">Aguila 1</option>
+                                                            <option value="Aguila 2">Aguila 2</option>
+                                                            <option value="Aguila 3">Aguila 3</option>
+                                                            <option value="Aguila 4">Aguila 4</option>
+                                                            <option value="Aguila 5">Aguila 5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Hora</label>
+                                                        <input type="time" formControlName="hora" [(ngModel)]="novedad.hora" class="form-control" placeholder="Ingrese hora">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Fecha</label>
+                                                        <input type="date" formControlName="fecha" [(ngModel)]="novedad.fecha" class="form-control" placeholder="Ingrese fecha">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Preliminar</label>
+                                                <textarea formControlName="preliminar" type="text" class="form-control" [(ngModel)]="novedad.preliminar" rows="3" placeholder="Ingrese la Preliminar"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Descripción</label>
+                                                <textarea type="text" formControlName="descripcion" class="form-control" [(ngModel)]="novedad.descripcion" rows="3" placeholder="Ingrese la Descripción"></textarea>
+                                                
+                                            </div>
+                                            <div class="invoice-btn-box text-right point">
+                                                <a (click)="cerrarModal()" class="default-btn"><i class=" bx bx-log-in"></i>&nbsp;Cerrar</a>
+                                                <button type="submit" class="optional-btn"><i class="bx bx-paper-plane"></i> Guardar </button>
+                                            </div>
+                                           
+                                        </form>
+                                        <!---fin-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                       
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

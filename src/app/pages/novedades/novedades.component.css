@@ -1,0 +1,23 @@
+.iconos{
+    font-size: 20px;
+}
+.iconos:hover{
+    color: cadetblue;
+}
+
+.observar:hover{
+    color:blue;
+}
+
+.editar:hover{
+    color: orange;
+}
+
+.eliminar:hover{
+    color:red;
+}
+
+.col-30{
+    width: 30%;
+    font-size: 15px;
+}

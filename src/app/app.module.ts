@@ -9,17 +9,18 @@ import { ModalUsuarioComponent } from './components/modal-usuario/modal-usuario.
 import { AuthModule } from './auth/auth.module';
 import { PageModule } from './pages/page.module';
 import { DataTablesModule } from 'angular-datatables';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ModalUsuarioComponent
+    AppComponent
   ],
  
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    ComponentsModule,
     PageModule,
     ReactiveFormsModule,
     HttpClientModule,

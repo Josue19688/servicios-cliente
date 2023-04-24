@@ -1,0 +1,79 @@
+
+<div class="fondo-modal "
+    [class.oculto]="mService.ocultarModalArchivo"
+>
+    <div class="modal fade basicModalLG show" 
+        id="basicStaticBackdrop" 
+        data-backdrop="static" 
+        role="dialog" 
+        aria-modal="true" 
+        style="display: block; padding-right: 17px;"
+    >
+        <div class="modal-dialog modal-lg" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Subir Archivos Nombre modelo</h3>
+                    <button type="button" (click)="cerrarModal()" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="invoice-area mb-30">
+    
+                        <div class="invoice-middle mb-30">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text">
+                                      <!--INICIO--->
+                                      <div class="demo-code-preview mt-5" data-label="Subir Archivo">
+                                        <div class="highlight" id="formsGrid1">
+                                           
+                                                <div class="row" *ngIf="visita">
+                                                    <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                        <label for="images" class="drop-container">
+                                                           
+                                                            <input 
+                                                            type="file" 
+                                                            id="images" 
+                                                            accept="image/*" 
+                                                            required
+                                                            (change)="cambiarImagen($event)"
+                                                            >
+                                                          </label>
+                                                       
+                                                    </div>
+                                                    <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                        <label for="images" class="drop-container">
+                                                            <img *ngIf="!imgTemporal" [src]="visita.imagenUrl" width="100" height="100">
+                                                            <img *ngIf="imgTemporal"  [src]="imgTemporal" width="100" height="100">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                               
+                                                <button type="submit" 
+                                                    [disabled]="!subirImagen"
+                                                    class="btn btn-primary rounded-pill mt-3"
+                                                    (click)="actualizarImagen()"
+                                                  >
+                                                    Actualizar Imagen
+                                                </button>
+                                         
+                                        </div>
+                                    </div>
+                                      <!---FIN-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                       
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

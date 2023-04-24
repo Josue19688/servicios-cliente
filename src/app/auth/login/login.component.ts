@@ -29,14 +29,15 @@ export class LoginComponent {
     const {correo, contrasena} = this.miFormulario.value;
 
     this.authService.login(correo,contrasena)
-    .subscribe(resp=>{
+    .subscribe(ok=>{
      
-    
+      if(ok===true){
         Swal.fire('Bienvenido','Usuario logeado correctamente','success');
         this.router.navigateByUrl('inicio/dashboard');
-        // setTimeout(()=>{
-        //   window.location.reload();
-        // },1000);
+      }else{
+        Swal.fire('Error','Usuario incorrecto!','error');
+        this.router.navigateByUrl('auth/login');
+      }
     })
   }
 

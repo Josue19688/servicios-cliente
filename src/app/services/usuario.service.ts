@@ -3,14 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Usuario, UsuarioGetResponse, UsuarioResponse } from '../interface/usuario.interface';
 import { Usuario as UsuarioModelo } from '../models/usuario';
+import { environment } from 'src/environments/environments';
+
+
+const base_url =  environment.base_url;
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  base_url = `http://localhost:5000/`;
-  
+
 
   constructor(
     private http:HttpClient
@@ -31,13 +34,13 @@ export class UsuarioService {
   }
 
   createUser(nombre:string, correo:string, contrasena:string, unidad:string){
-    const url =`${this.base_url}usuario`;
+    const url =`${base_url}usuario`;
     const body={nombre, correo, contrasena, unidad};
     return this.http.post<UsuarioResponse>(url,body,this.headers);
   }
 
   getUser(desde:Number=0){
-    const url =`${this.base_url}usuario?desde=${desde}`;
+    const url =`${base_url}usuario?desde=${desde}`;
     return this.http.get<UsuarioGetResponse>(url,this.headers)
     .pipe(
       map(resp=>{
@@ -55,14 +58,14 @@ export class UsuarioService {
   actualizarUsuario(usuario:UsuarioModelo){
     const {id,nombre,correo,activo,unidad,rol}=usuario;
     const body ={nombre, correo, activo, unidad, rol};
-    const url=`${this.base_url}usuario/${id}`;
+    const url=`${base_url}usuario/${id}`;
     return this.http.put(url,body,this.headers);
   }
  
 
   deleteUsuario(usuario:Usuario){
     const {id}= usuario;
-    const url=`${this.base_url}usuario/${id}`;
+    const url=`${base_url}usuario/${id}`;
     return this.http.delete(url,this.headers);
   }
 

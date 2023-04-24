@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -10,12 +11,16 @@ export class SidebarComponent implements OnInit {
 
   sidebarClass:string;
   movileClass:string;
- 
+  usuario:any;
 
-  constructor(private mService:ModalService) {
+  constructor(
+    private mService:ModalService,
+    private authService:AuthService
+    ) {
   
     this.movileClass='';
     this.sidebarClass='';
+    this.usuario=this.authService.usuario;
    }
   ngOnInit(): void {
     this.mService.menuDesplegable.subscribe(resp=>{
@@ -35,7 +40,7 @@ export class SidebarComponent implements OnInit {
    */
 
   movilDesactivar(){
-    console.log('Eliminando estilos')
+    
     this.mService.menuDesplegable.emit('');
     this.mService.menuActivo.emit('');
     this.movileSalir();

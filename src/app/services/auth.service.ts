@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { AuthResponse, User } from '../interface/auth.interface';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Usuario } from '../models/usuario';
+import { environment } from 'src/environments/environments';
 
+const base_url =  environment.base_url;
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,8 @@ import { Usuario } from '../models/usuario';
 export class AuthService {
 
   public usuario?:Usuario;
+  isLogin:boolean = false;
+  roleAs:string='';
 
   constructor(private http:HttpClient) { }
 
@@ -32,7 +36,7 @@ export class AuthService {
       activo = this.usuario.activo;
     }
     
-    const url=`http://localhost:5000/usuario/${id}`;
+    const url=`${base_url}${id}`;
     
    
     const body ={nombre, correo, activo, unidad, rol};
@@ -45,23 +49,26 @@ export class AuthService {
   }
 
   login(correo:string, contrasena:string){
-    const url = `http://localhost:5000/auth`;
+    const url = `${base_url}auth`;
     const body = {correo,contrasena};
     return this.http.post<AuthResponse>(url,body)
     .pipe(
       map(resp=>{
+        this.isLogin=true;
+        this.roleAs=resp.response.user.rol;
+        localStorage.setItem('ROLE', this.roleAs);
+        localStorage.setItem('STATE', 'true');
         localStorage.setItem('token',resp.response.token);
         return true;
       }),
-      catchError(err=>of(err.error.msg))
+      catchError(err=>of(false))
     )
   }
 
 
-
   validarToken():Observable<boolean>{
     const token = localStorage.getItem('token') || '';
-    const url = `http://localhost:5000/auth`;
+    const url = `${base_url}auth`;
     return this.http.get(url,{
       headers:{
         'x-token':token
@@ -100,4 +107,20 @@ export class AuthService {
       catchError(error=>of(false))
     )
   }
+
+  isLoggedIn() {
+    const loggedIn = localStorage.getItem('STATE');
+    if (loggedIn == 'true')
+      this.isLogin = true;
+    else
+      this.isLogin = false;
+    return this.isLogin;
+  }
+
+  getRole() {
+    this.roleAs = localStorage.getItem('ROLE') || '';
+    return this.roleAs;
+  }
+
+
 }

@@ -8,6 +8,8 @@ import { UsuariosComponent } from "./usuarios/usuarios.component";
 import { VisitasComponent } from "./visitas/visitas.component";
 import { AuthGuard } from "../guards/auth.guard";
 import { PerfilComponent } from "./perfil/perfil.component";
+import { AccesosComponent } from "./accesos/accesos.component";
+import { AgenteComponent } from "./agente/agente.component";
 
 
 
@@ -20,6 +22,10 @@ const routes:Routes=[
             {
                 path:'dashboard',
                 component:DashboardComponent
+            },
+            {
+                path:'accesos',
+                component:AccesosComponent
             },
             {
                 path:'novedades',
@@ -36,6 +42,10 @@ const routes:Routes=[
             {
                 path:'usuario',
                 component:UsuariosComponent
+            },
+            {
+                path:'agente',
+                component:AgenteComponent
             },
             {
                 path:'perfil',

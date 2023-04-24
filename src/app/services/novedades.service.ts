@@ -1,24 +1,37 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { NovedadesResponse,Novedad, NewNovedadesResponse } from '../interface/novedades.interface';
+import { Injectable, OnInit } from '@angular/core';
+import { map } from 'rxjs';
+import { NovedadesResponse, NewNovedadesResponse, UpdateNovedadResponse } from '../interface/novedades.interface';
+import { Novedad } from '../models/novedad';
+import { ModalService } from './modal.service';
+import { environment } from 'src/environments/environments';
+
+
+
+const base_url =  environment.base_url;
 
 @Injectable({
   providedIn: 'root'
 })
-export class NovedadesService {
-
-  private base_url='http://localhost:5000/api/';
-
-  constructor(
-    private http:HttpClient
-  ) { }
-
-  get token(): string {
-    return localStorage.getItem('token') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDAwZTA2MzE0ODYzNGQ2NTNhNmY2YzIiLCJpYXQiOjE2ODAyMDc3OTUsImV4cCI6MTY4MDI5NDE5NX0.yBiQW7AZKEWE-hmov5fykLaubZm_IhNuKTiW1funNzM';
-  }
+export class NovedadesService implements OnInit{
 
   
+
+  constructor(
+    private http:HttpClient,
+    public modalService:ModalService,
+  ) { 
+    this.modalService.novedad
+    .subscribe(resp =>this.getNovedades() );
+  }
+  ngOnInit(): void {
+    this.getNovedades()
+  }
+
+  get token(): string {
+    return localStorage.getItem('token') || '';
+  }
+
 
   get headers() {
     return {
@@ -28,22 +41,40 @@ export class NovedadesService {
     }
   }
 
-  getNovedades(desde:Number=0):Observable<NovedadesResponse>{
-    const url=`${this.base_url}novedad`;
-    return this.http.get<NovedadesResponse>(url,this.headers);
+  getNovedades(desde:Number=0){
+    const url=`${base_url}novedad?desde=${desde}`;
+    return this.http.get<NovedadesResponse>(url,this.headers)
+    .pipe(
+      map(resp=>{
+        const novedades =  resp.novedades.map(
+        novedad=> new Novedad(novedad.id,novedad.tipo,novedad.hora,novedad.fecha,novedad.puesto, novedad.preliminar,novedad.descripcion,'',novedad.createdAt,novedad.updatedAt,novedad.T01UsuarioId)
+        );
+        return {
+          total:resp.total,
+          novedades
+        }
+      })
+    )
   }
 
-  newNovedad (data:any){
+  newNovedad (data:Novedad){
     const{tipo,hora,fecha,puesto,preliminar,descripcion} =  data;
-    const url=`${this.base_url}novedad`;
+    const url=`${base_url}novedad`;
     return this.http.post<NewNovedadesResponse>(url,{
+      tipo,hora,fecha,puesto,preliminar,descripcion
+    },this.headers);
+  }
+  actualizarNovedad(id:any,novedad:Novedad){
+    const{tipo,hora,fecha,puesto,preliminar,descripcion} =  novedad;
+    const url=`${base_url}novedad/${id}`;
+    return this.http.put<UpdateNovedadResponse>(url,{
       tipo,hora,fecha,puesto,preliminar,descripcion
     },this.headers);
   }
 
   eliminarNovedad(novedad:Novedad){
-    const {uid}= novedad;
-    const url=`${this.base_url}novedad/${uid}`;
+    const {id}= novedad;
+    const url=`${base_url}novedad/${id}`;
     return this.http.delete(url,this.headers);
   }
 }

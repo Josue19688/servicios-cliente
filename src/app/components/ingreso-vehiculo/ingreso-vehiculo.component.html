@@ -1,0 +1,124 @@
+<div class="sidebar-left" style="width: 40%;">
+    <div class="sidebar">
+        <div class="sidebar-content d-flex email-sidebar" style="width: 90%;"
+            data-simplebar="init">
+            <div class="simplebar-wrapper" style="margin: -25px;">
+                <div class="simplebar-height-auto-observer-wrapper">
+                    <div class="simplebar-height-auto-observer"></div>
+                </div>
+                <div class="simplebar-mask">
+                    <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                        <div class="simplebar-content-wrapper"
+                            style="height: 100%; overflow: hidden;">
+                            <div class="simplebar-content" style="padding: 25px;">
+                                <div class="todo-menu">
+                                    <form [formGroup]="miFormulario" (ngSubmit)="crear()">
+                                        <div class="form-group">
+                                            <label>Ingrese el codigo</label>
+                                            <input type="email" formControlName="codigo"
+                                                class="form-control">
+
+                                        </div>
+
+
+                                        <button type="submit"
+                                            class="btn btn-primary">Guardar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="simplebar-placeholder" style="width: auto; height: 578px;"></div>
+            </div>
+            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                <div class="simplebar-scrollbar"
+                    style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+            </div>
+            <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                <div class="simplebar-scrollbar"
+                    style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-right" style="width: 60%;">
+    <div class="todo-area">
+        <div class="todo-list-wrapper">
+            <div class="todo-list">
+                <div class="todo-list-header d-flex align-items-center">
+                    <div class="header-left d-flex align-items-center mr-3">
+                        <ul class="list-inline m-0 d-flex">
+                            <li class="list-inline-item email-delete">
+                                <button type="button" class="btn-icon">
+                                    <i class="bx bx-trash"></i>
+                                </button>
+                            </li>
+
+                            <li class="list-inline-item email-unread">
+                                <button type="button" class="btn-icon">
+                                    <i class="bx bx-envelope"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="header-right w-100">
+                        Total Personal dentro : {{totalRegistros}}
+                    </div>
+                </div>
+
+                <ul class="list-wrapper" data-simplebar="init">
+                    <div class="simplebar-wrapper" style="margin: 0px;">
+                        <div class="simplebar-height-auto-observer-wrapper">
+                            <div class="simplebar-height-auto-observer"></div>
+                        </div>
+                        <div class="simplebar-mask">
+                            <div class="simplebar-offset" style="right: -15px; bottom: 0px;">
+                                <div class="simplebar-content-wrapper"
+                                    style="height: 100%; overflow: hidden scroll;">
+                                    <div class="simplebar-content" style="padding: 0px;">
+                                        <li class="todo-list-item"
+                                            *ngFor="let item of registros">
+
+
+                                            <div class="todo-item-title">
+                                                <img src="assets\img\user1.jpg"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="" alt="image"
+                                                    data-original-title="Sarah Taylor">
+                                                <h3>{{item.codigo}}</h3>
+                                                <p>{{horaMes(item.createdAt)}}</p>
+                                            </div>
+
+                                            <div class="todo-item-action">
+                                                <a (click)="egreso(item)" class="edit"><i
+                                                        class=" bx bxs-paper-plane"></i></a>
+                                                <a (click)="eliminar(item)" class="delete"><i
+                                                        class="bx bx-trash"></i></a>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="simplebar-placeholder" style="width: auto; height: 949px;">
+                        </div>
+                    </div>
+                    <div class="simplebar-track simplebar-horizontal"
+                        style="visibility: hidden;">
+                        <div class="simplebar-scrollbar"
+                            style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                    </div>
+                    <div class="simplebar-track simplebar-vertical"
+                        style="visibility: visible;">
+                        <div class="simplebar-scrollbar"
+                            style="height: 450px; transform: translate3d(0px, 204px, 0px); display: block;">
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

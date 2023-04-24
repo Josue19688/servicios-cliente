@@ -56,7 +56,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3>Listado de Usuarios Total : {{totalUsuarios}}</h3>
 
-       
+     
         <div class="dropdown">
             <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -96,19 +96,9 @@
         </div>
         <div class="demo-code-preview" data-label="Listado de Usuarios" *ngIf="!cargando">
 
-            <div class="nav-search-form d-none ml-auto d-md-block">
-                <label><i class='bx bx-search'></i></label>
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    placeholder="Buscar usuario"
-                    (keyup)="buscar(txtTermino.value)"
-                    #txtTermino
-                    >
-            </div>
-
-            <table    class="table  table-responsive mt-5" style="max-width: 100%;">
-                <thead class="bg-info">
+          
+            <table     datatable [dtOptions]="dtOptions" class="row-border hover">
+                <thead >
                     <tr>
                         <th class="w100">Avatar</th>
                         <th>Nombre</th>
@@ -146,23 +136,17 @@
                                 <option value="false">Inactivo</option>
                                 
                             </select>
-                            <!-- <div *ngIf="item.activo; then thenBlock else elseBlock"></div>
-                            <ng-template #thenBlock><span class="badge badge-pill badge-primary">Activo</span></ng-template>
-                            <ng-template #elseBlock><span class="badge badge-pill badge-danger">Inactivo</span></ng-template> -->
+                           
                         </td>
                         <td>
-                            <a href="#" class="btn btn-outline-info mr-1" ><i class="bx bx-edit-alt"></i></a>
+                            <a href="#" class="btn btn-outline-info mr-1"  ><i class="bx bx-edit-alt"></i></a>
                             <a href="javascript:void(0);"  (click)="eliminarUsuario(item)" class="btn btn-outline-danger"><i class="bx bx-trash"></i></a>
                         </td>
                         
                     </tr>
                 </tbody>
             </table>
-            <div *ngIf="txtTermino.value.length===0" >
-                <button (click)="cambiarPagina(-5)" class="btn btn-outline-primary rounded-pill">Anteriores</button>
-                &nbsp;
-                <button (click)="cambiarPagina(5)" class="btn btn-outline-primary rounded-pill">Siguientes</button>
-            </div>
+            
         </div>
     </div>
 </div>

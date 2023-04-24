@@ -89,4 +89,5 @@ export class PerfilComponent implements OnInit{
       Swal.fire('Buen Trabajo!','Perfil Actualizado Correctamente!','success');
     })
   }
+  
 }

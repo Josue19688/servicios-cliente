@@ -1,6 +1,7 @@
+import { environment } from "src/environments/environments";
 
 
-
+const base_url = environment.base_url;
 export class Usuario{
     constructor(
         public id:         number,
@@ -17,6 +18,6 @@ export class Usuario{
     ){}
 
     get imagenUrl(){
-        return `http://localhost:5000/uploads/archivo/usuario/${this.id}/${this.imagen}`;
+        return `${base_url}uploads/archivo/usuario/${this.id}/${this.imagen}`;
     }
 }

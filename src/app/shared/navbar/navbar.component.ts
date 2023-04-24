@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -13,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   activo:boolean=false;
   menuActiveClass:string;
- usuario:any;
+  usuario:any;
   
   constructor(
     private router:Router,
@@ -54,6 +53,8 @@ export class NavbarComponent implements OnInit {
  
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('STATE');
+    localStorage.removeItem('ROLE');
     this.router.navigateByUrl('auth/login');
   }
 }
