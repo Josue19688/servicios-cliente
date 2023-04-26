@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, } from '@angular/core';
+
 import * as moment from 'moment';
 import { Novedad } from 'src/app/models/novedad';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 import { ModalService } from 'src/app/services/modal.service';
 
 
@@ -13,15 +14,18 @@ import { ModalService } from 'src/app/services/modal.service';
 export class ModalUsuarioComponent  {
 
   novedad!: Novedad;
+
+  
   constructor(
     public modalService: ModalService
   ) {
     this.modalService.novedad
       .subscribe((resp: Novedad) => {
-        
         this.novedad = resp;
       });
+  
   }
+
  
   cerrarModal() {
     this.modalService.cerrarModal();

@@ -78,7 +78,7 @@ export class VisitasComponent implements OnInit{
   }
 
   cambiarPagina( valor: number ) {
-    console.log(valor)
+    
     this.desde += valor;
 
     if ( this.desde < 0 ) {
@@ -144,5 +144,6 @@ export class VisitasComponent implements OnInit{
   abrirModalArchivo(visita:Visita){
     this.mService.abrirModalArchivo();
     this.mService.visita.emit(visita);
+    this.mService.modelo.emit('visita');
   }
 }

@@ -12,11 +12,12 @@ export interface Novedade {
     puesto:       string;
     preliminar:   string;
     descripcion:  string;
-    imagen:       null;
-    createdAt: Date;
-    updatedAt: Date;
-    T01UsuarioId: string;
+    imagen?:      string;
+    createdAt:    Date;
+    updatedAt:    Date;
+    T01UsuarioId: number;
 }
+
 
 
 export interface NewNovedadesResponse {

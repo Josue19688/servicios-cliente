@@ -12,10 +12,10 @@ export class Novedad{
         public puesto :string, 
         public preliminar :string,
         public descripcion :string, 
-        public T01UsuarioId :string,
+        public T01UsuarioId :number,
         public updatedAt :Date, 
         public createdAt :Date,
-        public imagen?:  string,
+        public imagen?:  null | string,
     ){}
 
 

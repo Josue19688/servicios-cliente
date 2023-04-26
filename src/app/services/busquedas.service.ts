@@ -43,7 +43,19 @@ export class BusquedasService {
 
   private transformNovedad(resultado:any[]):Novedad[]{
     return resultado.map(
-      novedad=> new Novedad(novedad.id,novedad.tipo,novedad.hora,novedad.fecha,novedad.puesto, novedad.preliminar,novedad.descripcion,'',novedad.createdAt,novedad.updatedAt,novedad.T01UsuarioId)
+      novedad=> new Novedad(
+        novedad.id,
+          novedad.tipo,
+          novedad.hora,
+          novedad.fecha,
+          novedad.puesto, 
+          novedad.preliminar,
+          novedad.descripcion,
+          novedad.T01UsuarioId,
+          novedad.createdAt,
+          novedad.updatedAt,
+          novedad.imagen,
+      )
     );
   }
   private transformVisita(resultado:any[]):Visita[]{

@@ -2,6 +2,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Novedad } from '../models/novedad';
 import { Visita } from '../models/visita';
+import { Archivo } from '../models/archivo';
 
 
 @Injectable({
@@ -12,15 +13,20 @@ export class ModalService {
   private _ocultarModalEditar:boolean=true;
   private _ocultarModalVisita:boolean=true;
   private _ocultarModalEditarVisita:boolean=true;
+  private _ocultarModalArchivos:boolean=true;
+  private _ocultarModalEditarArchivo:boolean=true;
+
+  //subida de archivos varios modelos
   private _ocultarModalArchivo:boolean=true;
 
 
 
   public novedad:EventEmitter<Novedad> = new EventEmitter<Novedad>();
   public visita:EventEmitter<Visita> = new EventEmitter<Visita>();
+  public archivo:EventEmitter<Archivo>=new EventEmitter<Archivo>();
+
   public imagen:EventEmitter<string>=new EventEmitter<string>();
-
-
+  public modelo:EventEmitter<string>=new EventEmitter<string>();
 
   //este observable me puedo suscribir a el donde quiera
   public menuDesplegable : EventEmitter<string> = new EventEmitter<string>();
@@ -43,6 +49,9 @@ export class ModalService {
   }
 
 
+   /**
+   * Manipular clases para ocultar el modal
+   */
   get ocultarModal(){
     return this._ocultarModal;
   }
@@ -54,15 +63,19 @@ export class ModalService {
     return this._ocultarModalArchivo;
   }
 
-
-  /**
-   * Manipular clases para ocultar el modal
-   */
   get ocultarModalVisita(){
     return this._ocultarModalVisita;
   }
   get ocultarModalEditarVisita(){
     return this._ocultarModalEditarVisita;
+  }
+
+  get ocultarModalArchivos(){
+    return this._ocultarModalArchivos;
+  }
+
+  get ocultarModalEditarArchivo(){
+    return this._ocultarModalEditarArchivo;
   }
 
  
@@ -113,6 +126,26 @@ export class ModalService {
   cerrarModalEditarVisita(){
     this._ocultarModalEditarVisita=true;
   }
+
+  
+   /**
+   * Modales Archivos
+   */
+
+  abrirModalArchivos(){
+    this._ocultarModalArchivos=false;
+  }
+  cerrarModalArchivos(){
+    this._ocultarModalArchivos=true;
+  }
+
+  abrirModalEditarArchivo(){
+    this._ocultarModalEditarArchivo=false;
+  }
+  cerrarModalEditarArchivo(){
+    this._ocultarModalEditarArchivo=true;
+  }
+
   constructor() { 
     
   }

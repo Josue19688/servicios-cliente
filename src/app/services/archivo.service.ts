@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Archivo } from '../models/archivo';
-import { ArchivoResponse, NewArchivoInterface } from '../interface/archivo.interface';
+import { ArchivoResponse, NewArchivoInterface, UpdateArchivo } from '../interface/archivo.interface';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environments';
 
@@ -36,6 +36,10 @@ export class ArchivoService {
     return this.http.post<NewArchivoInterface>(url,archivo,this.headers);
   }
 
+  updateArchivo(archivo:Archivo,id:any){
+    const url = `${base_url}archivo/${id}`;
+    return this.http.put<UpdateArchivo>(url,archivo,this.headers);
+  }
   getArchivos(desde:Number=0){
     const url=`${base_url}archivo?desde=${desde}`;
     return this.http.get<ArchivoResponse>(url,this.headers)

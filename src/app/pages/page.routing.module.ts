@@ -10,6 +10,7 @@ import { AuthGuard } from "../guards/auth.guard";
 import { PerfilComponent } from "./perfil/perfil.component";
 import { AccesosComponent } from "./accesos/accesos.component";
 import { AgenteComponent } from "./agente/agente.component";
+import { IsadminGuard } from "../guards/isadmin.guard";
 
 
 
@@ -25,26 +26,51 @@ const routes:Routes=[
             },
             {
                 path:'accesos',
+                canActivate:[IsadminGuard],
+                data:{
+                    allowedRoles:['ADMIN_ROLE','ENCARGADO_ROLE','AGENTE_ROLE']
+                },
                 component:AccesosComponent
             },
             {
                 path:'novedades',
+                canActivate:[IsadminGuard],
+                data:{
+                    allowedRoles:['ADMIN_ROLE','ENCARGADO_ROLE','AGENTE_ROLE']
+                },
                 component:NovedadesComponent
             },
             {
                 path:'visitas',
+                canActivate:[IsadminGuard],
+                data:{
+                    allowedRoles:['ADMIN_ROLE','ASISTENTE_ROLE','ENCARGADO_ROLE','AGENTE_ROLE']
+                },
                 component:VisitasComponent
             },
             {
                 path:'archivo',
+                canActivate:[IsadminGuard],
+                data:{
+                    allowedRoles:['ADMIN_ROLE','ASISTENTE_ROLE','ENCARGADO_ROLE']
+                },
                 component:ArchivosComponent
             },
             {
                 path:'usuario',
+                canActivate:[IsadminGuard],
+                data:{
+                    allowedRoles:['ADMIN_ROLE']
+                },
                 component:UsuariosComponent
+                
             },
             {
                 path:'agente',
+                canActivate:[IsadminGuard],
+                data:{
+                    allowedRoles:['ADMIN_ROLE','ASISTENTE_ROLE','ENCARGADO_ROLE']
+                },
                 component:AgenteComponent
             },
             {

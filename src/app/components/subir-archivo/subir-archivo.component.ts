@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Archivo } from 'src/app/models/archivo';
+import { Novedad } from 'src/app/models/novedad';
 import { Visita } from 'src/app/models/visita';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -13,16 +15,45 @@ export class SubirArchivoComponent {
 
   subirImagen!: File;
   imgTemporal:any=null;
+
+  imgActual:any=null;
+  modelo:any='';
+  id:number=0;
+
+
   visita!:Visita;
+  novedad!:Novedad;
+  archivo!:Archivo;
+
   constructor(
     public mService:ModalService,
     private fileService:FileUploadService
   ){
     this.mService.visita.subscribe((resp:Visita)=>this.visita=resp);
+    this.mService.novedad.subscribe((resp:Novedad)=>this.novedad=resp);
+    this.mService.modelo.subscribe((resp:any)=>this.modelo=resp);
+    
+  }
+  
+  get imagenUrl(){
+    switch(this.modelo){
+      case 'visita':
+        return this.visita.imagenUrl;
+        break;
+      case 'visita':
+        return this.novedad.imagenUrl;
+        break;
+      case 'visita':
+        return this.archivo.imagenUrl;
+        break;
+      default:
+        return false;
+    }
   }
 
 
   cambiarImagen(event:any){
+   
     this.subirImagen= event.target.files[0];
 
     if(!event.target.files[0]){
@@ -40,19 +71,34 @@ export class SubirArchivoComponent {
 
   }
 
-  actualizarImagen(){
 
+
+  actualizarImagen(){
     
-    const {id}  = this.visita;
-   
-   
-    this.fileService.actualizarFoto(this.subirImagen,'visita',Number(id))
+    switch(this.modelo){
+      case 'visita':
+        this.id = this.visita.id;
+        break;
+      case 'novedad':
+        this.id = this.novedad.id;
+        break;
+      case 'archivo':
+        this.id = this.archivo.id;
+        break;
+      default:
+        console.log('No se encontro el modelo')
+    }
+    
+    this.fileService.actualizarFoto(this.subirImagen,this.modelo,this.id)
     .then(img=>{
+      this.cerrarModal()
       Swal.fire('Buen Trabajo!','Imagen actualizada correctamente!','success');
-     
+       
     }).catch(error=>{
+      this.cerrarModal()
       Swal.fire('Upss!','No se actualizo la imagen!','error');
     })
+    
   }
   
 

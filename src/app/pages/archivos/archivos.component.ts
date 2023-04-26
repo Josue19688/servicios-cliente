@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Archivo } from 'src/app/models/archivo';
 import { ArchivoService } from 'src/app/services/archivo.service';
 import { BusquedasService } from 'src/app/services/busquedas.service';
+import { ModalService } from 'src/app/services/modal.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -33,6 +34,7 @@ export class ArchivosComponent implements OnInit{
   constructor(
     private fb:FormBuilder,
     private archivoService:ArchivoService,
+    private mService:ModalService,
     private searchService:BusquedasService
   ){}
   ngOnInit(): void {
@@ -101,6 +103,7 @@ export class ArchivosComponent implements OnInit{
        this.archivoService.deleteArchivo(archivo)
        .subscribe((resp:any)=>{
         if(resp.ok===true){
+          this.getArchivos();
           Swal.fire('Buen Trabajo!','Registro eliminado correctamente.','success');
         }else{
           Swal.fire('Upss!','No se elimino el registro.','error');
@@ -108,6 +111,23 @@ export class ArchivosComponent implements OnInit{
        })
       }
     })
+  }
+
+  abrirModal(archivo:Archivo){
+    this.mService.abrirModalArchivos();
+    this.mService.archivo.emit(archivo);
+    this.mService.modelo.emit('archivo');
+  }
+
+  abrirModalEditar(archivo:Archivo){
+    this.mService.abrirModalEditarArchivo();
+    this.mService.archivo.emit(archivo);
+  }
+
+  abrirModalArchivo(archivo:Archivo){
+    this.mService.abrirModalArchivo();
+    this.mService.archivo.emit(archivo);
+    this.mService.modelo.emit('archivo');
   }
 
 }

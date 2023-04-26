@@ -47,7 +47,19 @@ export class NovedadesService implements OnInit{
     .pipe(
       map(resp=>{
         const novedades =  resp.novedades.map(
-        novedad=> new Novedad(novedad.id,novedad.tipo,novedad.hora,novedad.fecha,novedad.puesto, novedad.preliminar,novedad.descripcion,'',novedad.createdAt,novedad.updatedAt,novedad.T01UsuarioId)
+        novedad=> new Novedad(
+          novedad.id,
+          novedad.tipo,
+          novedad.hora,
+          novedad.fecha,
+          novedad.puesto, 
+          novedad.preliminar,
+          novedad.descripcion,
+          novedad.T01UsuarioId,
+          novedad.createdAt,
+          novedad.updatedAt,
+          novedad.imagen,
+          )
         );
         return {
           total:resp.total,

@@ -26,3 +26,8 @@ export interface Archivo {
     updatedAt:    Date;
     T01UsuarioId: number;
 }
+
+export interface UpdateArchivo {
+    ok:      boolean;
+    archivo: number[];
+}

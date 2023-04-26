@@ -144,6 +144,11 @@ export class NovedadesComponent implements OnInit{
     this.mService.abrirModal();
     this.mService.novedad.emit(novedad);
   }
+  abrirModalArchivo(novedad:Novedad){
+    this.mService.abrirModalArchivo();
+    this.mService.novedad.emit(novedad);
+    this.mService.modelo.emit('novedad');
+  }
   horaMes =(fecha:any)=>{
     const hoyMes = moment(fecha);
     return hoyMes.format(' MMMM D');

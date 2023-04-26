@@ -11,6 +11,8 @@ import { EditarNovedadComponent } from './editar-novedad/editar-novedad.componen
 import { EditarVisitaComponent } from './editar-visita/editar-visita.component';
 import { VisitaViewComponent } from './visita-view/visita-view.component';
 import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
+import { ModalArchivoComponent } from './modal-archivo/modal-archivo.component';
+import { ModalArchivoEditarComponent } from './modal-archivo-editar/modal-archivo-editar.component';
 
 
 
@@ -25,6 +27,8 @@ import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
     EditarVisitaComponent,
     VisitaViewComponent,
     SubirArchivoComponent,
+    ModalArchivoComponent,
+    ModalArchivoEditarComponent,
   ],
   exports:[
     ModalUsuarioComponent,
@@ -35,7 +39,9 @@ import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
     EditarNovedadComponent,
     EditarVisitaComponent,
     VisitaViewComponent,
-    SubirArchivoComponent
+    SubirArchivoComponent,
+    ModalArchivoComponent,
+    ModalArchivoEditarComponent,
   ],
   imports: [
     CommonModule,

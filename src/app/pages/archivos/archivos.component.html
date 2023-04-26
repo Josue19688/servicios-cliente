@@ -97,7 +97,6 @@
                         <th>Tipo</th>
                         <th>Correlativo</th>
                         <th>Departamento o Unidad</th>
-                        <th>Salida o Ingreso</th>
                         <th>Descripcion</th>
                         <th>Acciones</th>
                     </tr>
@@ -108,12 +107,12 @@
                         <td>{{item.tipo}}</td>
                         <td>{{item.numero}}</td>
                         <td>{{item.unidad}}</td>
-                        <td>{{item.origen}}</td>
                         <td>{{item.descripcion}}</td>
                         <td>
-                            <a href="#" class="btn btn-outline-info mr-1" ><i class=" bx bxs-low-vision"></i></a>
-                            <a href="#" class="btn btn-outline-info mr-1" ><i class="bx bx-edit-alt"></i></a>
-                            <a href="javascript:void(0);"  (click)="eliminarArchivo(item)" class="btn btn-outline-danger"><i class="bx bx-trash"></i></a>
+                            <a  class="iconos observar mr-2"  (click)="abrirModalArchivo(item)" data-toggle="tooltip" data-placement="top" title="Subir Archivo"><i class="bx bx-cloud-upload"></i></a>
+                            <a  class="iconos observar mr-2" (click)="abrirModal(item)"  data-toggle="tooltip" data-placement="top" title="Ver Novedad"><i class=" bx bxs-low-vision"></i></a>
+                            <a  class="iconos editar mr-2" (click)="abrirModalEditar(item)" ><i class="bx bx-edit-alt"  data-toggle="tooltip" data-placement="top" title="Editar Novedad"></i></a>
+                            <a  (click)="eliminarArchivo(item)" class="iconos eliminar"  data-toggle="tooltip" data-placement="top" title="Eliminar Novedad"><i class="bx bx-trash"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -121,3 +120,5 @@
         </div>
     </div>
 </div>
+<app-modal-archivo></app-modal-archivo>
+<app-modal-archivo-editar></app-modal-archivo-editar>

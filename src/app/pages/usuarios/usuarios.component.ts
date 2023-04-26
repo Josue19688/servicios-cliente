@@ -41,7 +41,9 @@ export class UsuariosComponent implements OnInit{
     private userService:UsuarioService,
     private searchService:BusquedasService,
     private authService:AuthService
-  ){}
+  ){
+    
+  }
  
   ngOnInit(): void {
     this.dtOptions = {

@@ -1,6 +1,6 @@
 
 <div class="fondo-modal "
-    [class.oculto]="modalService.ocultarModal"
+    [class.oculto]="mService.ocultarModalArchivos"
 >
     <div class="modal fade basicModalLG show" 
         id="basicStaticBackdrop" 
@@ -9,10 +9,10 @@
         aria-modal="true" 
         style="display: block; padding-right: 17px;"
     >
-        <div class="modal-dialog modal-lg" role="document" *ngIf="novedad">
+        <div class="modal-dialog modal-lg" role="document" *ngIf="archivo">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Novedad No. {{novedad.id}}</h3>
+                    <h3 class="modal-title">Archivo No. {{archivo.id}} </h3>
                     <button type="button" (click)="cerrarModal()" class="close" data-dismiss="modal">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -21,15 +21,17 @@
                     <div class="invoice-area mb-30">
                         <div class="invoice-header mb-30 d-flex justify-content-between">
                             <div class="invoice-left-text">
-                                <h3 class="mb-0">{{ novedad.tipo }}</h3>
+                                <h3 class="mb-0">{{ archivo.tipo }}</h3>
                                 <p class="mt-2 mb-0">
-                                    <strong>Novedad : </strong> {{ horaMes(novedad.fecha) }} <br>
-                                    <strong>Hora Novedad : </strong> {{ novedad.hora }} <br>
-                                    <strong>Creado : </strong>{{  horaMes(novedad.createdAt) }} <br></p>
+                                    <strong>Fecha  : </strong> {{ horaMes(archivo.fecha) }} <br>
+                                    <strong>Origen : </strong> {{ archivo.origen }} <br>
+                                    <strong>Unidad : </strong> {{ archivo.unidad }} <br>
+                                    <strong>Creado : </strong>{{  horaMes(archivo.createdAt) }} <br>
+                                </p>
                             </div>
         
                             <div class="invoice-right-text">
-                                <h3 class="mb-0 text-uppercase">{{ novedad.puesto }}</h3>
+                                <h3 class="mb-0 text-uppercase">{{ archivo.numero }}</h3>
                             </div>
                         </div>
         
@@ -37,23 +39,26 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text">
-                                        <strong>Preliminar : </strong> {{ novedad.preliminar }}<br><br>
-                                        <strong>Descripción : </strong> {{ novedad.descripcion }}
+                                        <strong>Descripción :{{archivo.descripcion}} </strong> 
                                     </div>
                                 </div>
                             </div>
-                            
-                            <img id="myImg" [src]="novedad.imagenUrl" alt="novedad" style="width:100%;max-width:300px" />
-                            
-                            
                         </div>
+                        
                         <div class="invoice-btn-box text-right point">
                             <a (click)="cerrarModal()" class="default-btn"><i class=" bx bx-log-in"></i>&nbsp;Cerrar</a>
+                            
                         </div>
                     </div>
+                       
+                  
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
 
