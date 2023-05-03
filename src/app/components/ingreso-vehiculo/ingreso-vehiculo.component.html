@@ -1,4 +1,6 @@
-<div class="sidebar-left" style="width: 40%;">
+
+
+<div class="sidebar-left" style="width: 50%;">
     <div class="sidebar">
         <div class="sidebar-content d-flex email-sidebar" style="width: 90%;"
             data-simplebar="init">
@@ -14,13 +16,59 @@
                                 <div class="todo-menu">
                                     <form [formGroup]="miFormulario" (ngSubmit)="crear()">
                                         <div class="form-group">
-                                            <label>Ingrese el codigo</label>
-                                            <input type="email" formControlName="codigo"
-                                                class="form-control">
-
+                                            <label>Placas</label>
+                                            <select formControlName="vehiculo" class="form-control">
+                                                <option>P-121GSD</option>
+                                                <option>P-122GSD</option>
+                                                <option>P-123GSD</option>
+                                                <option>P-124GSD</option>
+                                                <option>P-125GSD</option>
+                                            </select>
                                         </div>
-
-
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" formControlName="piloto"
+                                                        class="form-control"
+                                                        placeholder="Ingrese el piloto"
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" formControlName="kmsalida"
+                                                        class="form-control"
+                                                        placeholder="Ingrese kilometraje"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row row-cols-2">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <div formArrayName="csalida">
+                                                        <div 
+                                                            *ngFor="let item of getCodigos.controls; let pointIndex =index"
+                                                            [formGroupName]="pointIndex"
+                                                        >
+                                                            <input type="text" formControlName="csalida"
+                                                            class="form-control"
+                                                            placeholder="Ingrese acompañante"
+                                                            >
+                                                            <br>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <a  (click)="add()" data-toggle="tooltip" data-placement="top" title="Agregar Campos">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#00A8C6" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" fill="#00A8C6"/>
+                                                          </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
                                         <button type="submit"
                                             class="btn btn-primary">Guardar</button>
                                     </form>
@@ -42,8 +90,7 @@
         </div>
     </div>
 </div>
-
-<div class="content-right" style="width: 60%;">
+<div class="content-right" style="width: 50%;">
     <div class="todo-area">
         <div class="todo-list-wrapper">
             <div class="todo-list">
@@ -65,7 +112,7 @@
                     </div>
 
                     <div class="header-right w-100">
-                        Total Personal dentro : {{totalRegistros}}
+                        Total Personal dentro : 
                     </div>
                 </div>
 
@@ -79,23 +126,20 @@
                                 <div class="simplebar-content-wrapper"
                                     style="height: 100%; overflow: hidden scroll;">
                                     <div class="simplebar-content" style="padding: 0px;">
-                                        <li class="todo-list-item"
-                                            *ngFor="let item of registros">
-
-
+                                        <li class="todo-list-item">
                                             <div class="todo-item-title">
                                                 <img src="assets\img\user1.jpg"
                                                     data-toggle="tooltip" data-placement="top"
                                                     title="" alt="image"
                                                     data-original-title="Sarah Taylor">
-                                                <h3>{{item.codigo}}</h3>
-                                                <p>{{horaMes(item.createdAt)}}</p>
+                                                <h3>Placa</h3>
+                                                <p>kilometraje</p>
                                             </div>
 
                                             <div class="todo-item-action">
-                                                <a (click)="egreso(item)" class="edit"><i
+                                                <a  class="edit"><i
                                                         class=" bx bxs-paper-plane"></i></a>
-                                                <a (click)="eliminar(item)" class="delete"><i
+                                                <a  class="delete"><i
                                                         class="bx bx-trash"></i></a>
                                             </div>
                                         </li>
@@ -122,3 +166,6 @@
         </div>
     </div>
 </div>
+
+
+

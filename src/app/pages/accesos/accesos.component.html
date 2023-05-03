@@ -14,12 +14,14 @@
         </ul>
     </div>
 </div>
-<!----ITEM UNO ---->
-<div class="todo-content-area " style="max-width: 100%;" [ngStyle]="{'display':itemOne===true ? 'block' : 'none'}">
-   <app-ingreso-vehiculo></app-ingreso-vehiculo>
-</div>
 
-<!--ITEM DOS-->
-<div class="todo-content-area" style="max-width: 100%;" [ngStyle]="{'display':itemTwo===true ? 'block' : 'none'}">
+<!--ITEM UNO-->
+<div class="todo-content-area" style="max-width: 100%;" [ngStyle]="{'display':itemOne===true ? 'block' : 'none'}">
    <app-ingreso-personal></app-ingreso-personal>
 </div>
+
+<!----ITEM DOS ---->
+<div class="todo-content-area " style="max-width: 100%;" [ngStyle]="{'display':itemTwo===true ? 'block' : 'none'}">
+    <app-ingreso-vehiculo></app-ingreso-vehiculo>
+ </div>
+ 
