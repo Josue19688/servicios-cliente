@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { PageModule } from './pages/page.module';
 import { DataTablesModule } from 'angular-datatables';
 import { ComponentsModule } from './components/components.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { ComponentsModule } from './components/components.module';
     PageModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

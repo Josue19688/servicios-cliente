@@ -18,7 +18,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { AccesosComponent } from './accesos/accesos.component';
 import { ComponentsModule } from '../components/components.module';
 import { AgenteComponent } from './agente/agente.component';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { AgenteComponent } from './agente/agente.component';
     FormsModule,
     DataTablesModule,
     ComponentsModule,
+    NgxChartsModule
   ],
   exports:[
     HomeComponent,

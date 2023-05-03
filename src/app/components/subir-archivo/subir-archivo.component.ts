@@ -40,10 +40,10 @@ export class SubirArchivoComponent {
       case 'visita':
         return this.visita.imagenUrl;
         break;
-      case 'visita':
+      case 'novedad':
         return this.novedad.imagenUrl;
         break;
-      case 'visita':
+      case 'archivo':
         return this.archivo.imagenUrl;
         break;
       default:
