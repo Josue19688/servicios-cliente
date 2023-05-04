@@ -1,0 +1,119 @@
+
+<div class="fondo-modal "
+    [class.oculto]="mService.ocultarModalEditarVehiculo"
+>
+    <div class="modal fade basicModalLG show" 
+        id="basicStaticBackdrop" 
+        data-backdrop="static" 
+        role="dialog" 
+        aria-modal="true" 
+        style="display: block; padding-right: 17px;"
+    >
+        <div class="modal-dialog modal-lg" role="document" *ngIf="vehiculo" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Registro No. {{vehiculo.id}}</h3>
+                    <button type="button" (click)="cerrarModal()" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="invoice-area mb-30">
+                        <div class="invoice-header mb-30 d-flex justify-content-between">
+                            <div class="invoice-left-text">
+                                <div class="wrap2">
+                                    <span (click)="add()" class="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#00A8C6" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" fill="#f1f1fc"/>
+                                        </svg>
+                                    </span>
+                                </div>
+
+                                <h3 class="mb-0 text-uppercase">
+                                    <h3 class="mb-0">{{ vehiculo.vehiculo }}</h3>
+                                    <p class="mt-2 mb-0">
+                                        <strong>Km Salida  : </strong> {{ vehiculo.kmsalida }} <br>
+                                        <strong>Piloto : </strong> {{ vehiculo.piloto }} <br>
+                                        <strong>Codigos : </strong>{{ vehiculo.csalida }} <br>
+                                    </p>
+                                </h3>
+                                <br><br>
+                                <form [formGroup]="miFormulario" (ngSubmit)="crear()">
+                                    <!-- <div class="form-group">
+                                        <label>Placas</label>
+                                        <select formControlName="vehiculo" class="form-control">
+                                            <option>P-121GSD</option>
+                                            <option>P-122GSD</option>
+                                            <option>P-123GSD</option>
+                                            <option>P-124GSD</option>
+                                            <option>P-125GSD</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="row">
+                                        <!-- <div class="col">
+                                            <div class="form-group">
+                                                <input type="text" formControlName="piloto"
+                                                    class="form-control"
+                                                    placeholder="Ingrese el piloto"
+                                                >
+                                            </div>
+                                        </div> -->
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <input type="text" formControlName="kmsalida"
+                                                    class="form-control"
+                                                    placeholder="Ingrese kilometraje"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="">
+                                            <div formArrayName="csalida">
+                                                <div 
+                                                    *ngFor="let item of getControls(); let pointIndex =index"
+                                                    [formGroupName]="pointIndex"
+                                                >
+                                                    
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <a class="btn btn-outline-primary"   (click)="eliminar(pointIndex)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#d68a36" class="bi bi-trash" viewBox="0 0 16 16">
+                                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" fill="#ed0808"/>
+                                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" fill="#ed0808"/>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <input type="text" formControlName="acompanante"
+                                                            class="form-control form-control-lg"
+                                                            placeholder="Ingrese acompañante"
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <button type="submit"
+                                        class="btn btn-primary">Guardar</button>
+                                </form>
+                            </div>
+        
+                            <!-- <div class="invoice-right-text">
+                                
+                            </div> -->
+                        </div>
+                        
+                        <div class="invoice-btn-box text-right point">
+                            <a (click)="cerrarModal()" class="default-btn"><i class=" bx bx-log-in"></i>&nbsp;Cerrar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

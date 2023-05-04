@@ -13,6 +13,7 @@ import { VisitaViewComponent } from './visita-view/visita-view.component';
 import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
 import { ModalArchivoComponent } from './modal-archivo/modal-archivo.component';
 import { ModalArchivoEditarComponent } from './modal-archivo-editar/modal-archivo-editar.component';
+import { ModalEditarVehiculoComponent } from './modal-editar-vehiculo/modal-editar-vehiculo.component';
 
 
 
@@ -29,6 +30,7 @@ import { ModalArchivoEditarComponent } from './modal-archivo-editar/modal-archiv
     SubirArchivoComponent,
     ModalArchivoComponent,
     ModalArchivoEditarComponent,
+    ModalEditarVehiculoComponent,
   ],
   exports:[
     ModalUsuarioComponent,
@@ -42,6 +44,7 @@ import { ModalArchivoEditarComponent } from './modal-archivo-editar/modal-archiv
     SubirArchivoComponent,
     ModalArchivoComponent,
     ModalArchivoEditarComponent,
+    ModalEditarVehiculoComponent,
   ],
   imports: [
     CommonModule,

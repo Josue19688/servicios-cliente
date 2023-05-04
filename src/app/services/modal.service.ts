@@ -3,6 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Novedad } from '../models/novedad';
 import { Visita } from '../models/visita';
 import { Archivo } from '../models/archivo';
+import { Vehiculo } from '../models/vehiculo';
 
 
 @Injectable({
@@ -15,6 +16,7 @@ export class ModalService {
   private _ocultarModalEditarVisita:boolean=true;
   private _ocultarModalArchivos:boolean=true;
   private _ocultarModalEditarArchivo:boolean=true;
+  private _ocultarModalEditarVehiculo:boolean=true;
 
   //subida de archivos varios modelos
   private _ocultarModalArchivo:boolean=true;
@@ -24,6 +26,7 @@ export class ModalService {
   public novedad:EventEmitter<Novedad> = new EventEmitter<Novedad>();
   public visita:EventEmitter<Visita> = new EventEmitter<Visita>();
   public archivo:EventEmitter<Archivo>=new EventEmitter<Archivo>();
+  public vehiculo:EventEmitter<Vehiculo> = new EventEmitter<Vehiculo>();
 
   public imagen:EventEmitter<string>=new EventEmitter<string>();
   public modelo:EventEmitter<string>=new EventEmitter<string>();
@@ -76,6 +79,10 @@ export class ModalService {
 
   get ocultarModalEditarArchivo(){
     return this._ocultarModalEditarArchivo;
+  }
+
+  get ocultarModalEditarVehiculo(){
+    return this._ocultarModalEditarVehiculo;
   }
 
  
@@ -144,6 +151,18 @@ export class ModalService {
   }
   cerrarModalEditarArchivo(){
     this._ocultarModalEditarArchivo=true;
+  }
+
+  /**
+   * Modal para registro de vehiculos 
+   */
+
+  abrirModalEditarVehiculo(){
+    this._ocultarModalEditarVehiculo=false;
+  }
+
+  cerrarModalEditarVehiculo(){
+    this._ocultarModalEditarVehiculo=true;
   }
 
   constructor() { 

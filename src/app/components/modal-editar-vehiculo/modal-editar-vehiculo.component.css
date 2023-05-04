@@ -1,0 +1,21 @@
+
+
+.button{
+    max-width: 150px;
+    max-height: 130px;
+    cursor: pointer;
+    color: #f1f1fc;
+    background: #268fd4;
+    background: linear-gradient(90deg, rgb(27, 104, 219) 0%, rgb(23, 172, 218) 100%);
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgba(16, 110, 199, 0.64);
+    padding: 10px;
+}
+  
+
+  
+  
+
+ 
+  
+  

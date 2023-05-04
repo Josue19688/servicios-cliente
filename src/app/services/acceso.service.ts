@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
+import { CrearVehiculoResponse, DeleteVehiculoResponse, GetVehiculoResponse } from '../interface/vehiculo.interface';
 
 const base_url=environment.base_url;
 @Injectable({
@@ -27,6 +28,11 @@ export class AccesoService {
     }
   }
 
+  /**
+   * Metodos para solicitud de ingresos
+   * @param data 
+   * @returns modelo
+   */
   agregar(data:any){
     const {codigo} = data;
     const status = true;
@@ -52,6 +58,27 @@ export class AccesoService {
   deleteRegister(id:string){
     const url=`${base_url}ingreso/${id}`;
     return this.http.delete(url,this.headers);
+  }
+
+  /**
+   * Metodos para solicitud de vehiculos
+   * @param data 
+   * @returns modelo
+   */
+
+  registrarVehiculo(data:any){
+    const url=`${base_url}vehiculo`;
+    return this.http.post<CrearVehiculoResponse>(url,data,this.headers);
+  }
+
+  obtenerVehiculos(){
+    const url=`${base_url}vehiculo`;
+    return this.http.get<GetVehiculoResponse>(url,this.headers);
+  }
+
+  aliminarVehiculo(id:string){
+    const url=`${base_url}vehiculo/${id}`;
+    return this.http.delete<DeleteVehiculoResponse>(url,this.headers);
   }
 
 }
