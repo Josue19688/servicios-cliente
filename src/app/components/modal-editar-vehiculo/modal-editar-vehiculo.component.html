@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="invoice-area mb-30">
-                        <div class="invoice-header mb-30 d-flex justify-content-between">
+                        <!-- <div class="invoice-header mb-30 d-flex justify-content-between"> -->
                             <div class="invoice-left-text">
                                 <div class="wrap2">
                                     <span (click)="add()" class="button">
@@ -29,47 +29,18 @@
                                     </span>
                                 </div>
 
-                                <h3 class="mb-0 text-uppercase">
-                                    <h3 class="mb-0">{{ vehiculo.vehiculo }}</h3>
-                                    <p class="mt-2 mb-0">
-                                        <strong>Km Salida  : </strong> {{ vehiculo.kmsalida }} <br>
-                                        <strong>Piloto : </strong> {{ vehiculo.piloto }} <br>
-                                        <strong>Codigos : </strong>{{ vehiculo.csalida }} <br>
-                                    </p>
-                                </h3>
+                               
                                 <br><br>
                                 <form [formGroup]="miFormulario" (ngSubmit)="crear()">
-                                    <!-- <div class="form-group">
-                                        <label>Placas</label>
-                                        <select formControlName="vehiculo" class="form-control">
-                                            <option>P-121GSD</option>
-                                            <option>P-122GSD</option>
-                                            <option>P-123GSD</option>
-                                            <option>P-124GSD</option>
-                                            <option>P-125GSD</option>
-                                        </select>
-                                    </div> -->
                                     <div class="row">
-                                        <!-- <div class="col">
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                             <div class="form-group">
-                                                <input type="text" formControlName="piloto"
+                                                <input type="text" formControlName="kmingreso"
                                                     class="form-control"
-                                                    placeholder="Ingrese el piloto"
+                                                    placeholder="Ingrese kilometraje de ingreso"
                                                 >
                                             </div>
-                                        </div> -->
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <input type="text" formControlName="kmsalida"
-                                                    class="form-control"
-                                                    placeholder="Ingrese kilometraje"
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row ">
-                                        <div class="">
-                                            <div formArrayName="csalida">
+                                            <div formArrayName="cingreso">
                                                 <div 
                                                     *ngFor="let item of getControls(); let pointIndex =index"
                                                     [formGroupName]="pointIndex"
@@ -91,17 +62,24 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" style="font-size: 12px !important;">
+                                            <h3 class="mb-0 text-uppercase">
+                                                <h3 class="mb-0">{{ vehiculo.vehiculo }}</h3>
+                                                <p class="mt-2 mb-0">
+                                                    <strong>Km Salida  : </strong> {{ vehiculo.kmsalida }} <br>
+                                                    <strong>Piloto : </strong> {{ vehiculo.piloto }} <br>
+                                                    <strong>Codigos : </strong>{{ vehiculo.csalida }} <br>
+                                                </p>
+                                            </h3>
+                                        </div>
                                     </div>
+                                    
                                     <button type="submit"
                                         class="btn btn-primary">Guardar</button>
                                 </form>
                             </div>
-        
-                            <!-- <div class="invoice-right-text">
-                                
-                            </div> -->
-                        </div>
+                        <!-- </div> -->
                         
                         <div class="invoice-btn-box text-right point">
                             <a (click)="cerrarModal()" class="default-btn"><i class=" bx bx-log-in"></i>&nbsp;Cerrar</a>

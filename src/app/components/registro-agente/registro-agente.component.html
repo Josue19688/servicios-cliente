@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="form-group">
                     <label>Nombre Completo</label>
-                    <input type="text"  class="form-control" >
+                    <input formControlName="nombre" type="text"  class="form-control" >
                 </div>
             </div>
             <div class="col">
@@ -17,6 +17,7 @@
                     <input  
                         type="text" 
                         class="form-control" 
+                        formControlName="dpi"
                     >
                 </div>
             </div>
@@ -24,39 +25,83 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label>Status</label>
-                    <select  class="form-control">
-                        <option value="Activo">Activo</option>
-                        <option value="Baja">Baja</option>
-                        <option value="Suspendido">Suspendido</option>
-                    </select>
+                    <label>Telefono</label>
+                    <input type="text" formControlName="telefono" class="form-control" >
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
-                    <label>Unidad</label>
-                    <select  class="form-control">
-                        <option value="Instalaciones">Seguridad Instalaciones</option>
-                        <option value="Magistratura">Seguridad Magistratura</option>
-                    </select>
+                    <label>Correo</label>
+                    <input  
+                        type="email" 
+                        class="form-control" 
+                        formControlName="correo"
+                    >
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label>Fecha Ingreso</label>
-                    <input  type="date" class="form-control" >
+                    <label>Nacimiento</label>
+                    <input type="date" formControlName="nacimiento" class="form-control" >
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
-                    <label>Puesto Actual</label>
-                    <select  class="form-control">
-                        <option value="Instalaciones">Seguridad Instalaciones</option>
-                        <option value="Magistratura">Seguridad Magistratura</option>
-                        <option value="Encargado">Encargado Instalaciones</option>
+                    <label>Dirección</label>
+                    <input  
+                        type="text" 
+                        class="form-control" 
+                        formControlName="direccion"
+                    >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Igss</label>
+                    <input type="text" formControlName="igss"  class="form-control" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Nit</label>
+                    <input  
+                        type="text" 
+                        class="form-control" 
+                        formControlName="nit"
+                    >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Tipo Sangre</label>
+                    <select  class="form-control" formControlName="sangre">
+                        <option value="+O">+O</option>
+                        <option value="-O">-O</option>
+                        <option value="+A">+A</option>
+                        <option value="-A">-A</option>
+                        <option value="+B">+B</option>
+                        <option value="-B">-B</option>
+                        <option value="+AB">+AB</option>
+                        <option value="-AB">-AB</option>
+                        <option value="+RH">+RH</option>
+                        <option value="-RH">-RH</option>
                     </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Puesto</label>
+                    <input  
+                        type="text" 
+                        class="form-control" 
+                        formControlName="puesto"
+                    >
                 </div>
             </div>
         </div>
@@ -64,7 +109,7 @@
             <div class="col">
                 <div class="form-group">
                     <label>Grupo</label>
-                    <select  class="form-control">
+                    <select  class="form-control" formControlName="grupo">
                         <option value="A">A</option>
                         <option value="B">B</option>
                     </select>
@@ -72,37 +117,17 @@
             </div>
             <div class="col">
                 <div class="form-group">
-                    <label>Nit</label>
-                    <input  type="text" class="form-control" >
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label>Igss</label>
-                    <input  type="text" class="form-control" >
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label>Peso</label>
-                    <input  type="text" class="form-control" >
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label>Talla</label>
-                    <input  type="text" class="form-control" >
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label>Igss</label>
-                    <input  type="text" class="form-control" >
+                    <label>Estado</label>
+                    <select  class="form-control" formControlName="status">
+                        <option value="1">Activo</option>
+                        <option value="0">Baja</option>
+                        <option value="2">Suspendido</option>
+                        <option value="3">Vacaciones</option>
+                    </select>
                 </div>
             </div>
         </div>
+        
         <button type="submit" class="btn btn-primary rounded-pill " >
             Guardar
         </button>

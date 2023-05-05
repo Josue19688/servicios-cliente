@@ -46,4 +46,12 @@ export interface Msg {
     T01UsuarioId: number;
 }
 
+export interface UpdateVehiculoResponse {
+    ok:  boolean;
+    msg: Msg;
+}
+
+
+
+
 

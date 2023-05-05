@@ -41,7 +41,7 @@ export class ArchivoService {
     return this.http.put<UpdateArchivo>(url,archivo,this.headers);
   }
   getArchivos(desde:Number=0){
-    const url=`${base_url}archivo?desde=${desde}`;
+    const url=`${base_url}archivo`;
     return this.http.get<ArchivoResponse>(url,this.headers)
     .pipe(
       map(resp=>{

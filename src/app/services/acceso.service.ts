@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
-import { CrearVehiculoResponse, DeleteVehiculoResponse, GetVehiculoResponse } from '../interface/vehiculo.interface';
+import { CrearVehiculoResponse, DeleteVehiculoResponse, GetVehiculoResponse, UpdateVehiculoResponse } from '../interface/vehiculo.interface';
 
 const base_url=environment.base_url;
 @Injectable({
@@ -79,6 +79,11 @@ export class AccesoService {
   aliminarVehiculo(id:string){
     const url=`${base_url}vehiculo/${id}`;
     return this.http.delete<DeleteVehiculoResponse>(url,this.headers);
+  }
+
+  editarVehiculo(data:any,id:string){
+    const url=`${base_url}vehiculo/${id}`;
+    return this.http.put<UpdateVehiculoResponse>(url,data,this.headers);
   }
 
 }

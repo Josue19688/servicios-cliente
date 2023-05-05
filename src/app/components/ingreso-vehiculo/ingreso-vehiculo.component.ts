@@ -30,7 +30,7 @@ export class IngresoVehiculoComponent implements OnInit{
     private mService:ModalService,
     private acceso:AccesoService
   ){
-    
+    this.mService.vehiculo.subscribe(resp=>this.obtener());
   }
   ngOnInit(): void {
     this.obtener();
