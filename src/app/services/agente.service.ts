@@ -35,7 +35,8 @@ export class AgenteService {
     return this.http.post<CrearAgenteResponse>(url,agente,this.headers);
   }
 
-  updateAgente(agente:Agente,id:any){
+  updateAgente(agente:Agente){
+    const {id} = agente;
     const url=`${base_url}agente/${id}`;
     return this.http.put<ActualizarAgenteResponse>(url,agente,this.headers);
   }

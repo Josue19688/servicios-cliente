@@ -14,7 +14,11 @@ export class ModalArchivoComponent {
   constructor(
     public mService:ModalService
   ){
-    this.mService.archivo.subscribe((resp:Archivo)=>this.archivo=resp);
+    this.mService.archivo
+    .subscribe((resp:Archivo)=>{
+      this.archivo=resp;
+    });
+    
   }
 
 

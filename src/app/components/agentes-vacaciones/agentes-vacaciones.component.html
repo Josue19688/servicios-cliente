@@ -1,12 +1,16 @@
 
 
+
+
+
 <div class="card mb-30">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3>Listado de Agentes Suspendidos, Total : {{total}}</h3>
+        <h3>Listado de Agentes de Vacaciones Total : {{total}}</h3>
        
     </div>
 
     <div class="card-body">
+
         <div *ngIf="respuesta" class="alert alert-primary alert-dismissible fade show" role="alert">
             <strong>Buen Trabajo!!!</strong> &nbsp; &nbsp; &nbsp; Registro Actualizado Correctamente!!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -14,7 +18,7 @@
             </button>
         </div>
        
-        <div class="demo-code-preview" data-label="Listado Agentes Suspendidos" >
+        <div class="demo-code-preview" data-label="Listado Agentes Vacaciones" >
 
             <table  datatable [dtOptions]="dtOptions" class="row-border hover" *ngIf="agentes.length">
                 <thead >

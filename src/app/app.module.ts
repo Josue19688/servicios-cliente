@@ -11,6 +11,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { ComponentsModule } from './components/components.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     DataTablesModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

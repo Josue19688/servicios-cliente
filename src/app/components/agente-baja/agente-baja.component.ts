@@ -3,11 +3,11 @@ import { Agente } from 'src/app/models/agente';
 import { AgenteService } from 'src/app/services/agente.service';
 
 @Component({
-  selector: 'app-agentes-suspendidos',
-  templateUrl: './agentes-suspendidos.component.html',
-  styleUrls: ['./agentes-suspendidos.component.css']
+  selector: 'app-agente-baja',
+  templateUrl: './agente-baja.component.html',
+  styleUrls: ['./agente-baja.component.css']
 })
-export class AgentesSuspendidosComponent implements OnInit{
+export class AgenteBajaComponent implements OnInit{
 
   @Input() agentes:Agente[]=[];
   @Input() total :number=0;
@@ -18,7 +18,9 @@ export class AgentesSuspendidosComponent implements OnInit{
 
   constructor(
     private sAgente:AgenteService
-  ){}
+  ){
+    
+  }
   dtOptions: DataTables.Settings = {};
   ngOnInit(): void {
     this.dtOptions = {
@@ -43,4 +45,5 @@ export class AgentesSuspendidosComponent implements OnInit{
     
     return true;
   }
+
 }

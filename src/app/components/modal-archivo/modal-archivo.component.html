@@ -45,6 +45,21 @@
                             </div>
                         </div>
                         
+                        <pdf-viewer 
+                            [src]="archivo.imagenUrl"
+                            [render-text]="true"
+                            [original-size]="true"
+                            [zoom]="0.6"
+                            style="width: 700px; height: 300px; align-content: center; margin-bottom: 10px;"
+                        ></pdf-viewer>
+
+                        <a target="_blank" href="{{archivo.imagenUrl}}" download="{{archivo.imagenUrl}}" data-toggle="tooltip" data-placement="top" title="Ver y descargar archivo">
+                            <i style="font-size: 40px;" class="bx bxs-cloud-download"></i>
+                        </a>
+                            
+                        
+                      
+                        
                         <div class="invoice-btn-box text-right point">
                             <a (click)="cerrarModal()" class="default-btn"><i class=" bx bx-log-in"></i>&nbsp;Cerrar</a>
                             

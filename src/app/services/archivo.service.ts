@@ -40,7 +40,7 @@ export class ArchivoService {
     const url = `${base_url}archivo/${id}`;
     return this.http.put<UpdateArchivo>(url,archivo,this.headers);
   }
-  getArchivos(desde:Number=0){
+  getArchivos(){
     const url=`${base_url}archivo`;
     return this.http.get<ArchivoResponse>(url,this.headers)
     .pipe(

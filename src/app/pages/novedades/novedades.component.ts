@@ -88,7 +88,7 @@ export class NovedadesComponent implements OnInit{
   getNovedades(){
     this.cargando=true;
     
-    this.nService.getNovedades(this.desde)
+    this.nService.getNovedades()
     .subscribe(({total,novedades})=>{
       this.totalNovedades=total;
       this.novedades=novedades;

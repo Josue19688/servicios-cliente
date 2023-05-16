@@ -14,6 +14,9 @@ import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
 import { ModalArchivoComponent } from './modal-archivo/modal-archivo.component';
 import { ModalArchivoEditarComponent } from './modal-archivo-editar/modal-archivo-editar.component';
 import { ModalEditarVehiculoComponent } from './modal-editar-vehiculo/modal-editar-vehiculo.component';
+import { AgenteBajaComponent } from './agente-baja/agente-baja.component';
+import { AgentesVacacionesComponent } from './agentes-vacaciones/agentes-vacaciones.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 
@@ -31,6 +34,8 @@ import { ModalEditarVehiculoComponent } from './modal-editar-vehiculo/modal-edit
     ModalArchivoComponent,
     ModalArchivoEditarComponent,
     ModalEditarVehiculoComponent,
+    AgenteBajaComponent,
+    AgentesVacacionesComponent,
   ],
   exports:[
     ModalUsuarioComponent,
@@ -45,12 +50,15 @@ import { ModalEditarVehiculoComponent } from './modal-editar-vehiculo/modal-edit
     ModalArchivoComponent,
     ModalArchivoEditarComponent,
     ModalEditarVehiculoComponent,
+    AgenteBajaComponent,
+    AgentesVacacionesComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     DataTablesModule,
+    PdfViewerModule
   ]
 })
 export class ComponentsModule { }

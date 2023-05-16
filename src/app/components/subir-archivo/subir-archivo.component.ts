@@ -31,6 +31,7 @@ export class SubirArchivoComponent {
   ){
     this.mService.visita.subscribe((resp:Visita)=>this.visita=resp);
     this.mService.novedad.subscribe((resp:Novedad)=>this.novedad=resp);
+    this.mService.archivo.subscribe((resp:Archivo)=>this.archivo=resp);
     this.mService.modelo.subscribe((resp:any)=>this.modelo=resp);
     
   }
@@ -39,13 +40,13 @@ export class SubirArchivoComponent {
     switch(this.modelo){
       case 'visita':
         return this.visita.imagenUrl;
-        break;
+      
       case 'novedad':
         return this.novedad.imagenUrl;
-        break;
+        
       case 'archivo':
         return this.archivo.imagenUrl;
-        break;
+        
       default:
         return false;
     }

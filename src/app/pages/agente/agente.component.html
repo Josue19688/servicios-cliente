@@ -7,8 +7,18 @@
                 </a>
             </li>
             <li [ngClass]="itemTwo===true ? 'current' : '' " style="cursor:pointer;">
-                <a (click)="directivados()"><i class=" bx bx-user-x"></i>
-                    <span>Suspendidos</span>
+                <a (click)="directivados()"><i class=" bx bx-face "></i>
+                    <span>Agentes Suspendidos</span>
+                </a>
+            </li>
+            <li [ngClass]="itemTree===true ? 'current' : '' " style="cursor:pointer;">
+                <a (click)="vacaciones()"><i class="  bx bxs-user-detail"></i>
+                    <span>Agentes Vacaciones</span>
+                </a>
+            </li>
+            <li [ngClass]="itemFor===true ? 'current' : '' " style="cursor:pointer;">
+                <a (click)="baja()"><i class=" bx bx-user-x"></i>
+                    <span>Agentes Bajas</span>
                 </a>
             </li>
         </ul>
@@ -16,10 +26,20 @@
 </div>
 <!----ITEM UNO ---->
 <div class="todo-content-area " style="max-width: 100%;" [ngStyle]="{'display':itemOne===true ? 'block' : 'none'}">
-  <app-registro-agente></app-registro-agente>
+  <app-registro-agente (agente)="newAgente($event)" [agentes]="agentesActivos" [total]="agentesActivosTotal" />
 </div>
 
 <!--ITEM DOS-->
 <div class="todo-content-area" style="max-width: 100%;" [ngStyle]="{'display':itemTwo===true ? 'block' : 'none'}">
-   <app-agentes-suspendidos></app-agentes-suspendidos>
+   <app-agentes-suspendidos (agente)="newAgente($event)" [agentes]="agentesSuspendidos" [total]="agentesSuspendidosTotal" />
+</div>
+
+<!--ITEM TRES VACACIONES-->
+<div class="todo-content-area" style="max-width: 100%;" [ngStyle]="{'display':itemTree===true ? 'block' : 'none'}">
+    <app-agentes-vacaciones (agente)="newAgente($event)" [agentes]="agentesVacaciones" [total]="agentesVacacionesTotal" />
+</div>
+
+<!--ITEM CUATRO AGENTES DE BAJA-->
+<div class="todo-content-area" style="max-width: 100%;" [ngStyle]="{'display':itemFor===true ? 'block' : 'none'}">
+    <app-agente-baja (agente)="newAgente($event)" [agentes]="agentesBaja" [total]="agentesBajaTotal" />
 </div>

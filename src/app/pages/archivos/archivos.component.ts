@@ -59,7 +59,7 @@ export class ArchivosComponent implements OnInit{
 
   getArchivos(){
     this.cargando=true;
-    this.archivoService.getArchivos(this.desde)
+    this.archivoService.getArchivos()
     .subscribe(({total,archivos})=>{
       this.totalArchivos=total;
       this.archivos=archivos;

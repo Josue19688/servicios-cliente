@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Agente } from 'src/app/models/agente';
 import { AgenteService } from 'src/app/services/agente.service';
 import Swal from 'sweetalert2';
 
@@ -9,6 +10,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registro-agente.component.css']
 })
 export class RegistroAgenteComponent implements OnInit{
+
+
+
+
+
+  @Input() agentes: Agente[]=[];
+  @Input() total :number=0;
+  respuesta:boolean=false;
+  @Output()
+  public agente:EventEmitter<Agente> =  new EventEmitter();
+
+
+
 
   miFormulario:FormGroup=this.fb.group({
     nombre:['',[Validators.required]],
@@ -36,12 +50,15 @@ export class RegistroAgenteComponent implements OnInit{
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
+    
   }
 
   agregar(){
     this.sAgente.postAgente(this.miFormulario.value)
     .subscribe(resp=>{
       if(resp.ok){
+
+        this.agente.emit(this.miFormulario.value);
         this.miFormulario.reset()
         Swal.fire('Buen Trabajo!!','Registro creado exitosamente!','success');
       }else{
@@ -51,6 +68,24 @@ export class RegistroAgenteComponent implements OnInit{
       
     })
   }
+
+  cambiarEstado(agente:Agente){
+    this.sAgente.updateAgente(agente)
+    .subscribe(resp=>{
+      if(resp.ok){
+        this.respuesta=true;
+        this.agente.emit(agente);
+      }
+    })
+    
+    setTimeout(() => {
+      return this.respuesta=false;
+    },3000);
+    
+    return true;
+  }
+
+  
 
  
 

@@ -24,12 +24,12 @@ export class VisitasComponent implements OnInit{
   miFormulario:FormGroup = this.fb.group({
     tipo:['',[Validators.required]],
     puesto:['',[Validators.required]],
-    dpi:['',[Validators.required]],
+    dpi:['',],
     nombre:['',[Validators.required]],
     ingreso:['',[Validators.required]],
     salida:['',[Validators.required]],
-    placa:['',[Validators.required]],
-    vehiculo:['',[Validators.required]],
+    placa:['',],
+    vehiculo:['',],
     colaborador:['',[Validators.required]],
     proveniente:['',[Validators.required]]
   })

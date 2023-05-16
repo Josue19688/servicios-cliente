@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
 <div class="card mb-30">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3>Listado de Agentes Suspendidos, Total : {{total}}</h3>
+        <h3>Listado de Agentes de Baja, Total : {{total}}</h3>
        
     </div>
 
@@ -13,8 +19,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-       
-        <div class="demo-code-preview" data-label="Listado Agentes Suspendidos" >
+        <div class="demo-code-preview" data-label="Listado Agentes  Inactivos" >
 
             <table  datatable [dtOptions]="dtOptions" class="row-border hover" *ngIf="agentes.length">
                 <thead >

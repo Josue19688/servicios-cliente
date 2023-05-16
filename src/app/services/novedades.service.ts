@@ -42,7 +42,7 @@ export class NovedadesService implements OnInit{
   }
 
   getNovedades(desde:Number=0){
-    const url=`${base_url}novedad?desde=${desde}`;
+    const url=`${base_url}novedad`;
     return this.http.get<NovedadesResponse>(url,this.headers)
     .pipe(
       map(resp=>{
