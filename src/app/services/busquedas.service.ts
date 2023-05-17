@@ -7,6 +7,8 @@ import { Visita } from '../models/visita';
 import { Archivo } from '../models/archivo';
 import { InfoResponse } from '../interface/dashboard.interface';
 import { environment } from 'src/environments/environments';
+import { Registro } from '../models/ingreso';
+import { Vehiculo } from '../models/vehiculo';
 
 
 const base_url=environment.base_url;
@@ -82,11 +84,44 @@ export class BusquedasService {
     )
   }
 
+
+  private transformRegistro(resultado:any[]):Registro[]{
+    return resultado.map(
+      registro=>new Registro(
+        registro.id,
+        registro.codigo,
+        registro.status,
+        registro.createdAt,
+        registro.updatedAt,
+        registro.T01UsuarioId
+      )
+    )
+  }
+
+  private transformVehiculo(resultado:any[]):Vehiculo[]{
+    return resultado.map(
+      vehiculo=>new Vehiculo(
+        vehiculo.id,
+        vehiculo.piloto,
+        vehiculo.vehiculo,
+        vehiculo.kmsalida,
+        vehiculo.kmingreso,
+        vehiculo.status,
+        vehiculo.csalida,
+        vehiculo.cingreso,
+        vehiculo.sede,
+        vehiculo.updatedAt,
+        vehiculo.createdAt,
+        vehiculo.T01UsuarioId
+      )
+    )
+  }
+
   buscar(
-    tipo: 'usuario'|'novedad'|'visita'|'archivo',
+    tipo: 'usuario'|'novedad'|'visita'|'archivo'|'ingreso'|'vehiculo',
     termino:string
   ){
-    const url =`${base_url}/search/${tipo}/${termino}`;
+    const url =`${base_url}search/${tipo}/${termino}`;
     return this.http.get<any[]>(url,this.headers)
     .pipe(
       map((resp:any)=>{
@@ -100,6 +135,10 @@ export class BusquedasService {
             return this.transformVisita(resp.resultado);
           case 'archivo':
             return this.transformArchivo(resp.resultado);
+          case 'ingreso':
+            return this.transformRegistro(resp.resultado);
+          case 'vehiculo':
+            return this.transformVehiculo(resp.resultado);
           default:
             return [];
         }

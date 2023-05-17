@@ -117,12 +117,8 @@
             <div class="todo-list">
                 <div class="todo-list-header d-flex align-items-center">
                     <div class="header-left d-flex align-items-center mr-3">
-                        <ul class="list-inline m-0 d-flex">
-                            <li class="list-inline-item email-delete">
-                                <button type="button" class="btn-icon">
-                                    <i class="bx bx-trash"></i>
-                                </button>
-                            </li>
+                        <ul class="list-inline m-0 d-flex" style="font-size: 15px; font-weight: 500;">
+                            Total  {{totalRegistros}}
 
                             <li class="list-inline-item email-unread">
                                 <button type="button" class="btn-icon">
@@ -133,7 +129,19 @@
                     </div>
 
                     <div class="header-right w-100">
-                        Total Personal dentro : 
+                        
+                         
+                        <form>
+                            <label><i class="bx bx-search"></i></label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Buscar por placa..."
+                            (keyup)="buscar(txtTermino.value)"
+                            #txtTermino
+                            >
+                            
+                        </form>
                     </div>
                 </div>
 
@@ -149,7 +157,7 @@
                                     <div class="simplebar-content" style="padding: 0px;">
                                         <li class="todo-list-item" *ngFor="let item of registros">
                                             <div class="todo-item-title">
-                                                <img src="assets\img\user1.jpg"
+                                                <img src="assets\img\logo.png"
                                                     data-toggle="tooltip" data-placement="top"
                                                     title="" alt="image"
                                                     data-original-title="Sarah Taylor">

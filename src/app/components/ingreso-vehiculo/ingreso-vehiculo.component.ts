@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Vehiculo } from 'src/app/models/vehiculo';
 import { AccesoService } from 'src/app/services/acceso.service';
+import { BusquedasService } from 'src/app/services/busquedas.service';
 import { ModalService } from 'src/app/services/modal.service';
 import Swal from 'sweetalert2';
 
@@ -13,7 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class IngresoVehiculoComponent implements OnInit{
   
-  registros:any[]=[];
+  registros:Vehiculo[]=[];
+  registrosTemporales:Vehiculo[]=[];
   totalRegistros:number=0;
   itemOne:boolean=false;
   itemTwo:boolean=false;
@@ -28,7 +30,8 @@ export class IngresoVehiculoComponent implements OnInit{
   constructor(
     private fb:FormBuilder,
     private mService:ModalService,
-    private acceso:AccesoService
+    private acceso:AccesoService,
+    private searchService:BusquedasService,
   ){
     this.mService.vehiculo.subscribe(resp=>this.obtener());
   }
@@ -62,6 +65,7 @@ export class IngresoVehiculoComponent implements OnInit{
   obtener(){
     this.acceso.obtenerVehiculos().subscribe((resp)=>{
       this.registros= resp.vehiculos;
+      this.registrosTemporales=resp.vehiculos;
       this.totalRegistros=resp.total
     })
   }
@@ -77,11 +81,25 @@ export class IngresoVehiculoComponent implements OnInit{
     this.acceso.aliminarVehiculo(id).subscribe(resp=>{
       if(resp.ok){
         this.obtener();
-        Swal.fire('Buen Trabajo!!',resp.msg.toString(),'success')
+        Swal.fire('Buen Trabajo!!','Registro eliminado correctamente!','success')
       }else{
         Swal.fire('Upss!!','No se elimino el registro.','success')
       }
     })
+  }
+
+  buscar(termino:string){
+
+    if(termino.length===0){
+      return this.registros= this.registrosTemporales;
+    }
+    this.searchService.buscar('vehiculo',termino)
+      .subscribe((resp:Vehiculo[]|any[])=>{
+        this.registros=resp;
+    })
+
+    return true;
+
   }
 
 

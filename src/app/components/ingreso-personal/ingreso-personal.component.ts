@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { Registro } from 'src/app/models/ingreso';
 import { AccesoService } from 'src/app/services/acceso.service';
+import { BusquedasService } from 'src/app/services/busquedas.service';
 import { ModalService } from 'src/app/services/modal.service';
 import Swal from 'sweetalert2';
 
@@ -11,7 +13,11 @@ import Swal from 'sweetalert2';
 })
 export class IngresoPersonalComponent implements OnInit{
 
-  registros:any[]=[];
+  registros:Registro[]=[];
+  registrosTemporal:Registro[]=[];
+  cargando:boolean=true;
+  respuesta:boolean=false;
+
   totalRegistros:number=0;
   itemOne:boolean=false;
   itemTwo:boolean=false;
@@ -24,6 +30,7 @@ export class IngresoPersonalComponent implements OnInit{
     private fb:FormBuilder,
     private acceso:AccesoService,
     private mService:ModalService,
+    private searchService:BusquedasService,
   ){}
 
 
@@ -72,6 +79,7 @@ export class IngresoPersonalComponent implements OnInit{
     this.acceso.getRegistros()
     .subscribe((resp:any)=>{
       this.registros=resp.ingresos;
+      this.registrosTemporal=resp.ingresos;
       this.totalRegistros=resp.total;
     })
   }
@@ -105,6 +113,20 @@ export class IngresoPersonalComponent implements OnInit{
     })
   }
 
+
+  buscar(termino:string){
+
+    if(termino.length===0){
+      return this.registros= this.registrosTemporal;
+    }
+    this.searchService.buscar('ingreso',termino)
+      .subscribe((resp:Registro[]|any[])=>{
+        this.registros=resp;
+    })
+
+    return true;
+
+  }
   
 
   horaMes =(fecha:any)=>{

@@ -43,3 +43,7 @@
 <div class="todo-content-area" style="max-width: 100%;" [ngStyle]="{'display':itemFor===true ? 'block' : 'none'}">
     <app-agente-baja (agente)="newAgente($event)" [agentes]="agentesBaja" [total]="agentesBajaTotal" />
 </div>
+
+
+<app-modal-editar-agente></app-modal-editar-agente>
+<app-modal-view-agente></app-modal-view-agente>

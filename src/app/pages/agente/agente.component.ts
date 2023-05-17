@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Agente } from 'src/app/models/agente';
 import { AgenteService } from 'src/app/services/agente.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-agente',
@@ -25,8 +26,11 @@ export class AgenteComponent implements OnInit{
   agentesBajaTotal=0;
 
   constructor(
-    private sAgente:AgenteService
-  ){}
+    private sAgente:AgenteService,
+    private mService:ModalService
+  ){
+    this.mService.agente.subscribe(resp=>this.getAgentes());
+  }
   ngOnInit(): void {
     this.getAgentes();
   }

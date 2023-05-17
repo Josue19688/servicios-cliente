@@ -17,6 +17,8 @@ import { ModalEditarVehiculoComponent } from './modal-editar-vehiculo/modal-edit
 import { AgenteBajaComponent } from './agente-baja/agente-baja.component';
 import { AgentesVacacionesComponent } from './agentes-vacaciones/agentes-vacaciones.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ModalEditarAgenteComponent } from './modal-editar-agente/modal-editar-agente.component';
+import { ModalViewAgenteComponent } from './modal-view-agente/modal-view-agente.component';
 
 
 
@@ -36,6 +38,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ModalEditarVehiculoComponent,
     AgenteBajaComponent,
     AgentesVacacionesComponent,
+    ModalEditarAgenteComponent,
+    ModalViewAgenteComponent,
   ],
   exports:[
     ModalUsuarioComponent,
@@ -52,6 +56,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ModalEditarVehiculoComponent,
     AgenteBajaComponent,
     AgentesVacacionesComponent,
+    ModalEditarAgenteComponent,
+    ModalViewAgenteComponent,
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,7 @@ import { Novedad } from '../models/novedad';
 import { Visita } from '../models/visita';
 import { Archivo } from '../models/archivo';
 import { Vehiculo } from '../models/vehiculo';
+import { Agente } from '../models/agente';
 
 
 @Injectable({
@@ -17,6 +18,8 @@ export class ModalService {
   private _ocultarModalArchivos:boolean=true;
   private _ocultarModalEditarArchivo:boolean=true;
   private _ocultarModalEditarVehiculo:boolean=true;
+  private _ocultarModalEditarAgente:boolean=true;
+  private _ocultarModalViewAgente:boolean=true;
 
   //subida de archivos varios modelos
   private _ocultarModalArchivo:boolean=true;
@@ -27,6 +30,7 @@ export class ModalService {
   public visita:EventEmitter<Visita> = new EventEmitter<Visita>();
   public archivo:EventEmitter<Archivo>=new EventEmitter<Archivo>();
   public vehiculo:EventEmitter<Vehiculo> = new EventEmitter<Vehiculo>();
+  public agente:EventEmitter<Agente>=new EventEmitter<Agente>();
 
   public imagen:EventEmitter<string>=new EventEmitter<string>();
   public modelo:EventEmitter<string>=new EventEmitter<string>();
@@ -83,6 +87,14 @@ export class ModalService {
 
   get ocultarModalEditarVehiculo(){
     return this._ocultarModalEditarVehiculo;
+  }
+
+  get ocultarModarEditarAgente(){
+    return this._ocultarModalEditarAgente;
+  }
+
+  get ocultarModarViewAgente(){
+    return this._ocultarModalViewAgente;
   }
 
  
@@ -164,6 +176,25 @@ export class ModalService {
   cerrarModalEditarVehiculo(){
     this._ocultarModalEditarVehiculo=true;
   }
+
+  /**
+   * Modal para ver y editar agentes
+   */
+
+  abrirModalEditarAgente(){
+    this._ocultarModalEditarAgente=false;
+  }
+  cerrarModalEditarAgente(){
+    this._ocultarModalEditarAgente=true;
+  }
+
+  abrirModalViewAgente(){
+    this._ocultarModalViewAgente=false;
+  }
+  cerrarModalViewAgente(){
+    this._ocultarModalViewAgente=true;
+  }
+
 
   constructor() { 
     

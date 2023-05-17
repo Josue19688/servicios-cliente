@@ -35,13 +35,20 @@ export class AgenteService {
     return this.http.post<CrearAgenteResponse>(url,agente,this.headers);
   }
 
-  updateAgente(agente:Agente){
-    const {id} = agente;
-    const url=`${base_url}agente/${id}`;
+  updateAgente(agente:Agente, id:any=0){
+    let identificador;
+    if(agente.id){
+      identificador=agente.id;
+    }else{
+      identificador=id;
+    }
+    
+    const url=`${base_url}agente/${identificador}`;
     return this.http.put<ActualizarAgenteResponse>(url,agente,this.headers);
   }
 
-  deleteAgente(id:any){
+  deleteAgente(agente:Agente){
+    const {id}= agente;
     const url=`${base_url}agente/${id}`;
     return this.http.delete<DeleteAgenteResponse>(url,this.headers);
   }

@@ -50,22 +50,36 @@
                 <div class="todo-list-header d-flex align-items-center">
                     <div class="header-left d-flex align-items-center mr-3">
                         <ul class="list-inline m-0 d-flex">
-                            <li class="list-inline-item email-delete">
+                            <!-- <li class="list-inline-item email-delete">
                                 <button type="button" class="btn-icon">
                                     <i class="bx bx-trash"></i>
                                 </button>
-                            </li>
+                            </li> -->
 
                             <li class="list-inline-item email-unread">
                                 <button type="button" class="btn-icon">
                                     <i class="bx bx-envelope"></i>
                                 </button>
                             </li>
+                            <li class="list-inline-item email-unread" style="color: blue;">
+                                Personal dentro : {{totalRegistros}}
+                            </li>
                         </ul>
                     </div>
 
                     <div class="header-right w-100">
-                        Total Personal dentro : {{totalRegistros}}
+                       
+                        <form>
+                            <label><i class="bx bx-search"></i></label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Buscar por codigo...."
+                            (keyup)="buscar(txtTermino.value)"
+                            #txtTermino
+                            >
+                            <!-- <input type="text" class="form-control" placeholder="Buscar Codigo...."> -->
+                        </form>
                     </div>
                 </div>
 

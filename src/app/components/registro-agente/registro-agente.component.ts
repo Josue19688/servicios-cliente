@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Agente } from 'src/app/models/agente';
 import { AgenteService } from 'src/app/services/agente.service';
+import { ModalService } from 'src/app/services/modal.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -44,7 +45,8 @@ export class RegistroAgenteComponent implements OnInit{
 
   constructor(
     private fb:FormBuilder,
-    private sAgente:AgenteService
+    private sAgente:AgenteService,
+    private mService:ModalService
   ){}
   ngOnInit(): void {
     this.dtOptions = {
@@ -85,8 +87,37 @@ export class RegistroAgenteComponent implements OnInit{
     return true;
   }
 
-  
+  eliminarAgente(agente:Agente){
+    Swal.fire({
+      title: '¿Borrar Usuario?',
+      text: `Esta a punto de borrar a ${ agente.nombre }`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Si, borrarlo'
+    }).then((result:any) => {
+      if (result.value) {
 
- 
+        this.sAgente.deleteAgente(agente)
+        .subscribe(resp=>{
+          this.mService.agente.emit(agente);
+          Swal.fire(
+            'Usuario Borrado!',
+            `${ agente.nombre} fue eliminado correctamente!`,
+            'success'
+          );
+        })
+      }
+    })
+    return true;
+  }
+
+  abrirModal(agente:Agente){
+    this.mService.abrirModalViewAgente();
+    this.mService.agente.emit(agente);
+  }
+  abrirModalEditar(agente:Agente){
+    this.mService.abrirModalEditarAgente();
+    this.mService.agente.emit(agente);
+  }
 
 }
