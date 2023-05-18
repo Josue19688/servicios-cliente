@@ -19,6 +19,7 @@ import { AgentesVacacionesComponent } from './agentes-vacaciones/agentes-vacacio
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ModalEditarAgenteComponent } from './modal-editar-agente/modal-editar-agente.component';
 import { ModalViewAgenteComponent } from './modal-view-agente/modal-view-agente.component';
+import { ReportenovedadesComponent } from './reportes/reportenovedades/reportenovedades.component';
 
 
 
@@ -40,6 +41,7 @@ import { ModalViewAgenteComponent } from './modal-view-agente/modal-view-agente.
     AgentesVacacionesComponent,
     ModalEditarAgenteComponent,
     ModalViewAgenteComponent,
+    ReportenovedadesComponent,
   ],
   exports:[
     ModalUsuarioComponent,
@@ -58,6 +60,7 @@ import { ModalViewAgenteComponent } from './modal-view-agente/modal-view-agente.
     AgentesVacacionesComponent,
     ModalEditarAgenteComponent,
     ModalViewAgenteComponent,
+    ReportenovedadesComponent,
   ],
   imports: [
     CommonModule,

@@ -64,7 +64,21 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3>Listado de Novedades Total : {{totalNovedades}}</h3>
 
-       
+        <form [formGroup]="miFormularioReporte" (ngSubmit)="reporte()">
+            <div class="row">
+                <div class="col">
+                    <input type="date" formControlName="inicio" class="form-control" >
+                </div>
+                <div class="col">
+                    <input type="date" formControlName="final" class="form-control" >
+                </div>
+                <button type="submit" class="btn btn-primary rounded-pill " >
+                    Filtrar
+                </button>
+            </div>
+           
+        </form>
+
        
     </div>
 
@@ -107,9 +121,10 @@
                     </tr>
                 </tbody>
             </table>
-            
+            <app-reportenovedades [novedades]="novedades" [total]="totalNovedades" ></app-reportenovedades>
         </div>
     </div>
 </div>
 <app-modal-usuario></app-modal-usuario>
 <app-editar-novedad></app-editar-novedad>
+

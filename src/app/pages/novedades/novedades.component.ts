@@ -9,6 +9,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { NovedadesService } from 'src/app/services/novedades.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-novedades',
   templateUrl: './novedades.component.html',
@@ -19,6 +20,7 @@ export class NovedadesComponent implements OnInit{
   totalNovedades:Number=0;
   novedades:Novedad[]=[];
   novedadesTemp:Novedad[]=[];
+  
 
   desde:any=0;
   cargando:boolean=true;
@@ -33,6 +35,12 @@ export class NovedadesComponent implements OnInit{
     puesto:['',[Validators.required]],
     preliminar:['',[Validators.required]],
     descripcion:['']
+  })
+
+
+  miFormularioReporte:FormGroup = this.fb.group({
+    inicio:[''],
+    final:[''],
   })
 
 
@@ -53,6 +61,15 @@ export class NovedadesComponent implements OnInit{
   
 
 
+  reporte(){
+    const {inicio,final}=this.miFormularioReporte.value;
+    this.searchService.filtrar('novedad',inicio,final)
+    .subscribe((resp:Novedad[]|any[])=>{
+      this.novedades=resp;
+      this.mService.inicio.emit(inicio);
+      this.mService.final.emit(final);
+    })
+  }
 
 
   buscar(termino:string){

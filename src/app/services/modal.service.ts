@@ -34,6 +34,8 @@ export class ModalService {
 
   public imagen:EventEmitter<string>=new EventEmitter<string>();
   public modelo:EventEmitter<string>=new EventEmitter<string>();
+  public inicio:EventEmitter<string>=new EventEmitter<string>();
+  public final:EventEmitter<string>=new EventEmitter<string>();
 
   //este observable me puedo suscribir a el donde quiera
   public menuDesplegable : EventEmitter<string> = new EventEmitter<string>();

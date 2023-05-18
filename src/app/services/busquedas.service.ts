@@ -147,6 +147,38 @@ export class BusquedasService {
     )
   }
 
+  filtrar(
+    tipo: 'usuario'|'novedad'|'visita'|'archivo'|'ingreso'|'vehiculo',
+    inicio:string,
+    final:string
+  ){
+    const body ={inicio,final};
+    const url =`${base_url}search/${tipo}`;
+    return this.http.post<any[]>(url,body,this.headers)
+    .pipe(
+      map((resp:any)=>{
+
+        switch(tipo){
+          case 'usuario':
+            return this.transformUser(resp.resultado);
+          case 'novedad':
+            return this.transformNovedad(resp.resultado);
+          case 'visita':
+            return this.transformVisita(resp.resultado);
+          case 'archivo':
+            return this.transformArchivo(resp.resultado);
+          case 'ingreso':
+            return this.transformRegistro(resp.resultado);
+          case 'vehiculo':
+            return this.transformVehiculo(resp.resultado);
+          default:
+            return [];
+        }
+
+      })
+    )
+  }
+
 
   conteoInfo(){
     const url =`${base_url}dashboard`;
